@@ -12,16 +12,14 @@ import{HttpClientModule} from '@angular/common/http';
 
 
 @Component({
-  selector: 'app-form-login',
-  standalone: true,
-  imports: [ReactiveFormsModule,
-       FormsModule,
-       ButtonComponent,
-       CommonModule,
-       HttpClientModule],
-
-  templateUrl: './form-login.component.html',
-  styleUrl: './form-login.component.css'
+    selector: 'app-form-login',
+    imports: [ReactiveFormsModule,
+        FormsModule,
+        ButtonComponent,
+        CommonModule,
+        HttpClientModule],
+    templateUrl: './form-login.component.html',
+    styleUrl: './form-login.component.css'
 })
 export class FormLoginComponent {
   isLoginOrRegister = true;
@@ -40,8 +38,9 @@ export class FormLoginComponent {
         onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-
-      // Enviando dados para a API
+      console.log('email: '+ email);
+      console.log('password: '+ password);
+      //Enviando dados para a API
       this.http.post(this.apiUrl, { username: email, password }).subscribe({
         next: (response) => {
           console.log('Login realizado com sucesso!', response);

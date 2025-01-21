@@ -2,11 +2,10 @@ import { Component,Input,Output,EventEmitter } from '@angular/core';
 
 
 @Component({
-  selector: 'app-check-box-tabela',
-  standalone: true,
-  imports: [],
-  templateUrl: './check-box-tabela.component.html',
-  styleUrl: './check-box-tabela.component.css'
+    selector: 'app-check-box-tabela',
+    imports: [],
+    templateUrl: './check-box-tabela.component.html',
+    styleUrl: './check-box-tabela.component.css'
 })
 export class CheckBoxTabelaComponent {
   // O valor que será passado pelo componente pai

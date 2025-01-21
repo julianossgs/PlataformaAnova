@@ -6,21 +6,22 @@ import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Console } from 'console';
 
 @Component({
-  selector: 'app-form-register',
-  standalone: true,
-  imports: [ButtonComponent,
-
-    CommonModule,ReactiveFormsModule],
-  templateUrl: './form-register.component.html',
-  styleUrl: './form-register.component.css'
+    selector: 'app-form-register',
+    imports: [ButtonComponent,
+        CommonModule, ReactiveFormsModule],
+    templateUrl: './form-register.component.html',
+    styleUrl: './form-register.component.css'
 })
 export class FormRegisterComponent {
-  //  isLoginOrRegister = true;
+    //isLoginOrRegister = true;
     registerForm: FormGroup;
-    apiUrl = '';
+
     // Endpoint da API
+    apiUrl = '';
+
 
     constructor(private http: HttpClient, private fb: FormBuilder) {
       // Criação do formulário reativo
@@ -29,8 +30,10 @@ export class FormRegisterComponent {
 
       });
     }
+
       // Método para tratar a submissão do formulário
           onSubmit(): void {
+            console.log('teste');
       if (this.registerForm.valid) {
         const { email} = this.registerForm.value;
 

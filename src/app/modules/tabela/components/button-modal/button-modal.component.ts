@@ -2,11 +2,10 @@ import { Component,Input } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
-  selector: 'app-button-modal',
-  standalone: true,
-  imports: [],
-  templateUrl: './button-modal.component.html',
-  styleUrl: './button-modal.component.css'
+    selector: 'app-button-modal',
+    imports: [],
+    templateUrl: './button-modal.component.html',
+    styleUrl: './button-modal.component.css'
 })
 export class ButtonModalComponent {
    @Input({required:true})

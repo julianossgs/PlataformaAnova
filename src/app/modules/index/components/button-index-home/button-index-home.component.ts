@@ -2,11 +2,10 @@ import { Component,Input } from '@angular/core';
 import { IconIndexComponent } from '../icon-index/icon-index.component';
 
 @Component({
-  selector: 'app-button-index-home',
-  standalone: true,
-  imports: [IconIndexComponent],
-  templateUrl: './button-index-home.component.html',
-  styleUrl: './button-index-home.component.css'
+    selector: 'app-button-index-home',
+    imports: [IconIndexComponent],
+    templateUrl: './button-index-home.component.html',
+    styleUrl: './button-index-home.component.css'
 })
 export class ButtonIndexHomeComponent {
      onButtonClick(){

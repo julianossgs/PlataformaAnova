@@ -3,14 +3,13 @@ import { ButtonIndexCardSearchComponent } from "../button-index-card-search/butt
 import { InputSelectIndexCardSearchComponent } from "../input-select-index-card-search/input-select-index-card-search.component";
 
 @Component({
-  selector: 'app-card-index-search',
-  standalone: true,
-  imports: [
-    ButtonIndexCardSearchComponent,
-    InputSelectIndexCardSearchComponent
-],
-  templateUrl: './card-index-search.component.html',
-  styleUrl: './card-index-search.component.css'
+    selector: 'app-card-index-search',
+    imports: [
+        ButtonIndexCardSearchComponent,
+        InputSelectIndexCardSearchComponent
+    ],
+    templateUrl: './card-index-search.component.html',
+    styleUrl: './card-index-search.component.css'
 })
 export class CardIndexSearchComponent {
 

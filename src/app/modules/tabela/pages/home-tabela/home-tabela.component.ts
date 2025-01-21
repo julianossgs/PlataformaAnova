@@ -13,20 +13,19 @@ import { InputComponent } from "../../../tabela/components/input/input.component
 import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-lateral-main.component';
 
 @Component({
-  selector: 'app-home-tabela',
-  standalone: true,
-  imports: [ButtonComponent,
-    ModalComponent,
-    ButtonNavbarComponent,
-    BreadcrumbsComponent,
-    AccordionComponent,
-    ModalComponent,
-    TableComponent,
-    ModalmenutabelaComponent,
-    InputComponent,
-    MenuLateralMainComponent],
-  templateUrl: './home-tabela.component.html',
-  styleUrl: './home-tabela.component.css'
+    selector: 'app-home-tabela',
+    imports: [ButtonComponent,
+        ModalComponent,
+        ButtonNavbarComponent,
+        BreadcrumbsComponent,
+        AccordionComponent,
+        ModalComponent,
+        TableComponent,
+        ModalmenutabelaComponent,
+        InputComponent,
+        MenuLateralMainComponent],
+    templateUrl: './home-tabela.component.html',
+    styleUrl: './home-tabela.component.css'
 })
 export class HomeTabelaComponent {
   btnClicked(){

@@ -5,15 +5,14 @@ import { EChartsOption } from 'echarts';
 
 
 @Component({
-  selector: 'app-grafhic-index',
-  standalone: true,
-  imports: [CommonModule,
-    NgxEchartsDirective],
-  templateUrl: './grafhic-index.component.html',
-  styleUrl: './grafhic-index.component.css',
-  providers:[
-    provideEcharts(),
-  ]
+    selector: 'app-grafhic-index',
+    imports: [CommonModule,
+        ],
+    templateUrl: './grafhic-index.component.html',
+    styleUrl: './grafhic-index.component.css',
+    providers: [
+        provideEcharts(),
+    ]
 })
 export class GrafhicIndexComponent {
    chartOption:EChartsOption = {

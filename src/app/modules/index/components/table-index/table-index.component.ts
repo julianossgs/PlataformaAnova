@@ -3,11 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ButtonIndexTableComponent } from "../button-index-table/button-index-table.component";
 
 @Component({
-  selector: 'app-table-index',
-  standalone: true,
-  imports: [CommonModule, ButtonIndexTableComponent],
-  templateUrl: './table-index.component.html',
-  styleUrl: './table-index.component.css'
+    selector: 'app-table-index',
+    imports: [CommonModule, ButtonIndexTableComponent],
+    templateUrl: './table-index.component.html',
+    styleUrl: './table-index.component.css'
 })
 export class TableIndexComponent {
   users = [
