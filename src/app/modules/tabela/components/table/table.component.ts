@@ -9,14 +9,13 @@ import { InputComponent } from "../../../login/components/input/input.component"
 
 
 @Component({
-  selector: 'app-table',
-  standalone: true,
-  imports: [CommonModule,
-    ButtonComponent,
-    CheckBoxTabelaComponent,
-    FormsModule],
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.css'
+    selector: 'app-table',
+    imports: [CommonModule,
+        ButtonComponent,
+        CheckBoxTabelaComponent,
+        FormsModule],
+    templateUrl: './table.component.html',
+    styleUrl: './table.component.css'
 })
 export class TableComponent {
 

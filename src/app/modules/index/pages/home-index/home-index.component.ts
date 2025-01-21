@@ -17,40 +17,38 @@ import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-l
 import { NavbarMainComponent } from "../../../main/navbar-main/navbar-main.component";
 
 @Component({
-  selector: 'app-home-index',
-  standalone: true,
-  imports: [
-    CommonModule,
-    NgxEchartsDirective, // para usar a diretiva [echarts]
-    // Seus componentes
-    NavbarComponent,
-    FooterComponent,
-    CardIndexComponent,
-    TableIndexComponent,
-    CardIndexSearchComponent,
-    CardIndexHomeComponent,
-    GrafhicIndexComponent,
-    MenuLateralMainComponent,
-    NavbarMainComponent
-],
-  templateUrl: './home-index.component.html',
-  // Use "styleUrls" (plural), não "styleUrl"
-  styleUrls: ['./home-index.component.css'],
-  providers: [
-    // Fornece a biblioteca ECharts por meio do ngx-echarts
-    provideEcharts({
-      // Para SSR avançado, se desejar, pode adicionar lazy load aqui
-      // Exemplo:
-      // echarts: () => {
-      //   if (typeof window === 'undefined') {
-      //     // Se estiver no servidor, retorna fake
-      //     return Promise.resolve({});
-      //   } else {
-      //     return import('echarts');
-      //   }
-      // }
-    })
-  ]
+    selector: 'app-home-index',
+    imports: [
+        CommonModule,
+        NgxEchartsDirective, // para usar a diretiva [echarts]
+        // Seus componentes
+       
+        CardIndexComponent,
+        TableIndexComponent,
+        CardIndexSearchComponent,
+        CardIndexHomeComponent,
+        GrafhicIndexComponent,
+        MenuLateralMainComponent,
+
+    ],
+    templateUrl: './home-index.component.html',
+    // Use "styleUrls" (plural), não "styleUrl"
+    styleUrls: ['./home-index.component.css'],
+    providers: [
+        // Fornece a biblioteca ECharts por meio do ngx-echarts
+        provideEcharts({
+        // Para SSR avançado, se desejar, pode adicionar lazy load aqui
+        // Exemplo:
+        // echarts: () => {
+        //   if (typeof window === 'undefined') {
+        //     // Se estiver no servidor, retorna fake
+        //     return Promise.resolve({});
+        //   } else {
+        //     return import('echarts');
+        //   }
+        // }
+        })
+    ]
 })
 export class HomeIndexComponent {
 

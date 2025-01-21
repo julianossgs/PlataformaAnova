@@ -5,15 +5,14 @@ import { FormComponent } from "../form/form.component";
 import { ButtonModalComponent } from '../button-modal/button-modal.component';
 
 @Component({
-  selector: 'app-modal',
-  standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    FormComponent,ButtonModalComponent
-],
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+    selector: 'app-modal',
+    imports: [
+        FormsModule,
+        CommonModule,
+        FormComponent, ButtonModalComponent
+    ],
+    templateUrl: './modal.component.html',
+    styleUrl: './modal.component.css'
 })
 export class ModalComponent {
 

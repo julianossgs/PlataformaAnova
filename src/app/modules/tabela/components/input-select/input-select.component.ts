@@ -3,11 +3,10 @@ import { Component,Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-select',
-  standalone: true,
-  imports: [FormsModule,CommonModule],
-  templateUrl: './input-select.component.html',
-  styleUrl: './input-select.component.css'
+    selector: 'app-input-select',
+    imports: [FormsModule, CommonModule],
+    templateUrl: './input-select.component.html',
+    styleUrl: './input-select.component.css'
 })
 export class InputSelectComponent {
   listItems=[

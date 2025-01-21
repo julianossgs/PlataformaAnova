@@ -1,20 +1,17 @@
 import { Component,Input,Output,EventEmitter} from '@angular/core';
-import { ButtonNavbarComponent } from '../../tabela/components/button-navbar/button-navbar.component';
+// import { ButtonNavbarComponent } from '../../tabela/components/button-navbar/button-navbar.component';
 import { CommonModule } from '@angular/common';
 
 
 @Component({
-  selector: 'app-navbar-main',
-  standalone: true,
-  imports: [
-    CommonModule],
-  template: `
+    selector: 'app-navbar-main',
+    imports: [
+        CommonModule
+    ],
+    template: `
 
 `,
-styleUrls: ['./navbar-main.component.css']
-
-
-
+    styleUrls: ['./navbar-main.component.css']
 })
 export class NavbarMainComponent {
 

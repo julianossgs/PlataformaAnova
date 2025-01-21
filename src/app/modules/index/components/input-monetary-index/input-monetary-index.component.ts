@@ -3,11 +3,10 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-monetary-index',
-  standalone: true,
-  imports: [CurrencyMaskModule,FormsModule],
-  templateUrl: './input-monetary-index.component.html',
-  styleUrl: './input-monetary-index.component.css'
+    selector: 'app-input-monetary-index',
+    imports: [CurrencyMaskModule, FormsModule],
+    templateUrl: './input-monetary-index.component.html',
+    styleUrl: './input-monetary-index.component.css'
 })
 export class InputMonetaryIndexComponent {
     @Input({required:true})

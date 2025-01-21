@@ -10,22 +10,18 @@ import { ButtonModalComponent } from '../button-modal/button-modal.component';
 
 
 @Component({
-  selector: 'app-form',
-  standalone: true,
-  imports: [
-
-      InputMonetaryComponent,
-      FormsModule,
-      InputMonetaryComponent,
-      CommonModule,
-      ReactiveFormsModule,
-      NgxMaskDirective
-  ],
-  providers:[provideNgxMask()],
-
-  templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
-
+    selector: 'app-form',
+    imports: [
+        InputMonetaryComponent,
+        FormsModule,
+        InputMonetaryComponent,
+        CommonModule,
+        ReactiveFormsModule,
+        NgxMaskDirective
+    ],
+    providers: [provideNgxMask()],
+    templateUrl: './form.component.html',
+    styleUrl: './form.component.css'
 })
 
 export class FormComponent implements OnInit{

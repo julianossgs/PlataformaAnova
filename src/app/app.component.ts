@@ -5,18 +5,16 @@ import { FooterMainComponent } from "./modules/main/footer-main/footer-main.comp
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
-import { ActivatedRoute,NavigationEnd } from '@angular/router';
+import { NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet,
-    NavbarMainComponent,
-    FooterMainComponent,
-
-    CommonModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [RouterOutlet,
+        NavbarMainComponent,
+        FooterMainComponent,
+        CommonModule],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   shouldShowNavbar = true;
