@@ -1,0 +1,98 @@
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+
+// ngx-echarts
+import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+import { EChartsOption } from 'echarts';
+
+// Seus outros imports (ex.: Navbar, Footer, etc.)
+import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+import { CardIndexComponent } from '../../components/card-index/card-index.component';
+import { TableIndexComponent } from '../../components/table-index/table-index.component';
+import { CardIndexSearchComponent } from '../../components/card-index-search/card-index-search.component';
+import { CardIndexHomeComponent } from '../../components/card-index-home/card-index-home.component';
+import { GrafhicIndexComponent } from '../../components/grafhic-index/grafhic-index.component';
+import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-lateral-main.component';
+import { NavbarMainComponent } from "../../../main/navbar-main/navbar-main.component";
+
+@Component({
+  selector: 'app-home-index',
+  standalone: true,
+  imports: [
+    CommonModule,
+    NgxEchartsDirective, // para usar a diretiva [echarts]
+    // Seus componentes
+    NavbarComponent,
+    FooterComponent,
+    CardIndexComponent,
+    TableIndexComponent,
+    CardIndexSearchComponent,
+    CardIndexHomeComponent,
+    GrafhicIndexComponent,
+    MenuLateralMainComponent,
+    NavbarMainComponent
+],
+  templateUrl: './home-index.component.html',
+  // Use "styleUrls" (plural), não "styleUrl"
+  styleUrls: ['./home-index.component.css'],
+  providers: [
+    // Fornece a biblioteca ECharts por meio do ngx-echarts
+    provideEcharts({
+      // Para SSR avançado, se desejar, pode adicionar lazy load aqui
+      // Exemplo:
+      // echarts: () => {
+      //   if (typeof window === 'undefined') {
+      //     // Se estiver no servidor, retorna fake
+      //     return Promise.resolve({});
+      //   } else {
+      //     return import('echarts');
+      //   }
+      // }
+    })
+  ]
+})
+export class HomeIndexComponent {
+
+  /**
+   * Variável para indicar se estamos rodando no browser (true) ou no servidor (false).
+   * Isso evita o erro 'window is not defined' no SSR.
+   */
+  isBrowser = false;
+
+  // Opções do seu gráfico ECharts
+  chartOption: EChartsOption = {
+    xAxis: {
+      type: 'category',
+      data: ['MAR/23', 'MAIO/24', 'JUNHO/24', 'SET/24', 'NOV/24', 'JAN/25'],
+      axisLabel: {
+        rotate: 0,
+        interval: 0
+      }
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        name: 'Vendas(%)',
+        type: 'line',
+        data: [5, 10, 20, 40, 60, 80],
+        label: {
+          show: true,
+          position: 'top',
+          formatter: '{c}'
+        }
+      }
+    ]
+  };
+
+  /**
+   * Construtor que injeta PLATFORM_ID para verificar se estamos no browser ou servidor
+   */
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    // Verifica se estamos no browser
+    this.isBrowser = isPlatformBrowser(this.platformId);
+  }
+
+}

@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "http://vps40250.publiccloud.com.br:5010",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

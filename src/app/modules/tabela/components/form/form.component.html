@@ -1,0 +1,342 @@
+
+<form [formGroup]="form" class="row needs-validation"
+novalidate action="" (ngSubmit)="submitForm()"
+>
+
+  <!--Conta-->
+  <div class="col-md-4 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="conta" class="form-label">Conta</label>
+    <input
+    class="text-center form-control
+    custom-placeholder is-invalid"
+    type="text"
+    id="conta"
+    formControlName="conta"
+    [class.is-invalid]="form.get('conta')?.errors &&
+    form.get('conta')?.touched"
+    required
+     mask="000000"/>
+    <div class="invalid-feedback" *ngIf="form.get('conta')?.invalid && form.get('conta')?.touched">
+      <span *ngIf="form.get('conta')?.hasError('required')">
+        Campo obrigatório!.
+      </span>
+      <span *ngIf="form.get('conta')?.hasError('pattern')">
+        Conta inválida!.
+      </span>
+    </div>
+
+  </div>
+
+  <!--Nome-->
+  <div class="col-md-8 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="nome" class="form-label">Nome Completo</label>
+    <input class="text-center form-control
+    custom-placeholder is-invalid"
+    type="text"
+    id="nome"
+    minlength="2"
+    maxlength="100"
+    formControlName="nome"
+    [class.is-invalid]="form.get('nome')?.touched && form.get('nome')?.invalid"
+    placeholder="Ex.: Nome"
+    />
+    <div class="invalid-feedback" *ngIf="form.get('nome')?.touched">
+      <span *ngIf="form.get('nome')?.hasError('required')">
+        Campo obrigatório!.
+      </span>
+      <span *ngIf="form.get('nome')?.hasError('maxLenght')">
+        Nome deve conter no mínimo 2 caracteres e no máximo 100 caracteres.
+      </span>
+      <span *ngIf="form.get('nome')?.hasError('minLenght')">
+        Nome deve conter no mínimo 2 caracteres e no máximo 100 caracteres.
+      </span>
+
+
+    </div>
+
+  </div>
+
+  <!--Cpf-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="cpfcnpj" class="form-label">CPF ou CNPJ</label>
+    <input class="text-center form-control custom-placeholder is-invalid" type="text"
+    id="cpfcnpj"
+    formControlName="cpfcnpj"
+    required
+    [mask]="form.get('cpfcnpj')?.value.length < 12 ? '000.000.000-00' : '00.000.000/0000-00'"
+
+    [class.is-invalid]="form.get('cpfcnpj')?.errors
+    && form.get('cpfcnpj')?.touched"
+    />
+
+    <div class="invalid-feedback"
+    *ngIf="form.get('cpfcnpj')?.hasError('required')">
+      Campo obrigatório!
+    </div>
+    <!-- <div class="invalid-feedback"
+    *ngIf="form.get('cpfcnpj')?.invalid || form.get('cpfcnpj')?.touched
+    ">
+      CPF/CNPJ inválido!
+    </div> -->
+
+    </div>
+
+
+  <!--Hub-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="hub" class="form-label">Hub Credenciado</label>
+    <select id="hub" class="form-select is-invalid"
+    formControlName="hub"
+    [class.is-invalid]="form.get('hub')?.errors && form.get('hub')?.touched">
+      <option selected>Selecione o Hub</option>
+      <option>Hub 1</option>
+      <option>Hub 2</option>
+      <option>Hub 3</option>
+    </select>
+    <div class="invalid-feedback">Campo obrigatório!</div>
+  </div>
+
+  <!--Carteira-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="carteira" class="form-label">Carteira</label>
+    <select id="carteira" class="form-select is-invalid" formControlName="carteira"
+    [class.is-invalid]="form.get('carteira')?.errors && form.get('carteira')?.touched">
+      <option selected>Selecione a Carteira</option>
+      <option>Carteira 1</option>
+      <option>Carteira 2</option>
+      <option>Carteira 3</option>
+    </select>
+    <div class="invalid-feedback">Campo obrigatório!</div>
+  </div>
+
+  <!--Corretora-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="corretora" class="form-label">Corretora</label>
+    <select id="corretora" class="form-select is-invalid" formControlName="corretora"
+     [class.is-invalid]="form.get('corretora')?.errors && form.get('corretora')?.touched">
+      <option selected>Selecione a Corretora</option>
+      <option>Corretora 1</option>
+      <option>Corretora 2</option>
+      <option>Corretora 3</option>
+    </select>
+    <div class="invalid-feedback">Campo obrigatório!</div>
+  </div>
+
+  <!--email-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="email" class="form-label">Email</label>
+    <input class="text-center form-control custom-placeholder is-invalid" type="email"
+    id="email"
+    formControlName="email"
+    [class.is-invalid]="form.get('email')?.errors && form.get('email')?.touched"
+    required/>
+
+    <div class="invalid-feedback"
+    *ngIf="form.get('email')?.hasError('required')">
+       Campo obrigatório!
+    </div>
+    <div class="invalid-feedback"
+    *ngIf="form.get('email')?.hasError('pattern')">
+       Informe um email válido!
+    </div>
+
+
+  </div>
+
+  <!--Telefone-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="phone" class="form-label">Telefone</label>
+    <input class="text-center form-control
+    custom-placeholder is-invalid"
+    type="text"
+    id="phone"
+    formControlName="phone"
+    [class.is-invalid]="form.get('phone')?.errors &&
+    form.get('phone')?.touched"
+    [mask]="'(00)00000-0000'"
+    placeholder="Ex.: (00)00000-0000"
+    />
+    <div class="invalid-feedback" *ngIf="form.get('phone')?.touched">
+      <span *ngIf="form.get('phone')?.hasError('required')">
+        Campo obrigatório!.
+      </span>
+      <span *ngIf="form.get('phone')?.hasError('pattern')">
+        Informe um telefone válido!.
+      </span>
+    </div>
+
+  </div>
+
+  <!--Cep-->
+  <div class="col-md-5 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="cep" class="form-label">CEP</label>
+    <input class="text-center form-control
+    custom-placeholder is-invalid"
+    type="text"
+    id="cep"
+    formControlName="cep"
+    [class.is-invalid]="form.get('cep')?.errors &&
+    form.get('cep')?.touched"
+    mask="00000-000"
+    required/>
+
+    <div class="invalid-feedback"  *ngIf="form.get('cep')?.invalid && form.get('cep')?.touched">
+      <span *ngIf="form.get('cep')?.hasError('required')">
+        Campo obrigatório!.
+      </span>
+      <!-- <span *ngIf="form.get('cep')?.hasError('pattern')">
+        Cep inválido!.
+      </span> -->
+    </div>
+  </div>
+
+  <!--endereço-->
+  <div class="col-md-7 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="end" class="form-label">Endereço</label>
+    <input class="text-center form-control custom-placeholder is-invalid" type="text"
+    id="end"
+    formControlName="end" [class.is-invalid]="form.get('end')?.errors && form.get('end')?.touched"/>
+    <div class="invalid-feedback">Campo obrigatório!</div>
+  </div>
+
+  <!--Pl-->
+  <div class="col-md-6 mb-3 form-group">
+    <span><i class="bi bi-asterisk text-danger me-2"></i></span>
+    <label for="pl" class="form-label">PL Inicial</label>
+     <app-input-monetary [type]="'text'"
+     placeholderText=""
+     id="pl"
+     [class.is-invalid]="form.get('pl')?.errors && form.get('pl')?.touched" class="text-center"
+     >
+
+     </app-input-monetary>
+     <div class="invalid-feedback">Campo obrigatório!</div>
+  </div>
+
+  <!--Div vazia-->
+  <div class="col-md-6 mb-3 form-group">
+
+  </div>
+
+  <!--Nacionalidade-->
+  <div class="col-md-6 mb-3 form-group">
+
+    <label for="nac" class="form-label">Nacionalidade</label>
+    <input class="text-center form-control custom-placeholder"
+    type="text"
+    id="nac"
+    />
+  </div>
+
+  <!--Estado civil-->
+  <div class="col-md-6 mb-3 form-group">
+
+    <label for="civil" class="form-label">Estado Civil</label>
+    <select id="civil" class="form-select">
+      <option selected>Selecione o Estado Civil</option>
+      <option>Casado</option>
+      <option>Solteiro</option>
+      <option>Divorciado</option>
+    </select>
+  </div>
+
+  <!--Sexo-->
+  <div class="col-md-6 mb-3 form-group">
+
+    <label for="sexo" class="form-label">Sexo</label>
+    <select id="sexo" class="form-select">
+      <option selected>Selecione o Sexo</option>
+      <option>Masculino</option>
+      <option>Feminino</option>
+
+    </select>
+  </div>
+
+  <!--Profissão-->
+  <div class="col-md-6 mb-3 form-group">
+
+    <label for="profissao" class="form-label">Profissão</label>
+    <input class="text-center form-control
+    custom-placeholder"
+    type="text"
+    id="profissao"
+    minlength="2"
+    maxlength="60"
+    />
+  </div>
+
+  <!--RG-->
+  <div class="col-md-6 mb-3 form-group">
+
+    <label for="rg" class="form-label">RG</label>
+    <input class="text-center form-control
+    custom-placeholder is-invalid"
+    type="text"
+    id="rg"
+
+    [class.is-invalid]="form.get('rg')?.errors"
+    [mask]="'00.000.000-0'"
+    />
+    <div class="invalid-feedback"
+    *ngIf="form.get('rg')?.hasError('pattern')">
+       Informe um RG válido!
+    </div>
+  </div>
+
+  <!--Orgão emissor-->
+  <!-- <div class="col-md-6 mb-2 form-group">
+
+    <label for="emissor" class="form-label">Órgão Emissor</label>
+    <input class="text-center text-uppercase form-control custom-placeholder is-invalid"
+    type="text"
+    id="emissor"
+    [mask]="'AAA'"
+
+    formControlName="emissor"
+    [class.is-invalid]="form.get('emissor')?.touched && form.get('emissor')?.invalid"
+
+    />
+    <div class="invalid-feedback"
+    *ngIf="form.get('emissor')?.touched && form.get('emissor')?.hasError('pattern')">
+       Campo inválido!
+    </div>
+
+  </div> -->
+
+  <div class="col-md-6 mb-2 form-group">
+    <label for="emissor" class="form-label">Órgão Emissor</label>
+    <input
+      class="text-center form-control custom-placeholder"
+      type="text"
+      id="emissor"
+      formControlName="emissor"
+      [mask]="'AAA'"
+      [class.is-invalid]="form.get('emissor')?.touched && form.get('emissor')?.invalid"
+      placeholder="Ex.: SSP"
+    />
+    <div class="invalid-feedback" *ngIf="form.get('emissor')?.touched">
+      <span *ngIf="form.get('emissor')?.hasError('minlength')">
+        Deve conter exatamente 3 letras.
+      </span>
+      <span *ngIf="form.get('emissor')?.hasError('pattern')">
+        Use apenas letras maiúsculas (A-Z).
+      </span>
+    </div>
+  </div>
+  <div>
+    <span>{{form.get('emissor')?.value}}</span>
+    <span>{{form.get('emissor')?.value}}</span>
+  </div>
+</form>
+
+

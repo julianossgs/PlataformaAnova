@@ -1,0 +1,36 @@
+<nav class="navbar navbarCard m-2">
+
+
+    <div>
+
+        <form class="row formNavbar">
+          <div class="col-8">
+            <label class="form-label label03">
+              Valor do Repasse
+            </label>
+            <app-input-monetary-index
+
+               [type]="'text'"
+               placeholderText=""
+               id="pl"
+               [inputStyle]="'input03'">
+
+            </app-input-monetary-index>
+          </div>
+          <div class="col-8">
+            <label class="form-label label03">
+              Mês anterior
+            </label>
+            <app-input-monetary-index
+              [type]="'text'"
+              placeholderText=""
+              id="pl"
+              [inputStyle]="'input04'">
+
+            </app-input-monetary-index>
+          </div>
+        </form>
+
+    </div>
+
+</nav>

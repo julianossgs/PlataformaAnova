@@ -1,0 +1,218 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center vh-100"
+  >
+    <!--mobile-->
+    <div class="menu-mobile col-12
+    col-md-8
+               d-block d-xl-none"
+                                  >
+       <!--Menu-->
+
+
+
+        <div class="content-title text-center mb-3">
+          <p class="title">Cadastro de Clientes nas Carteiras Administradas</p>
+        </div>
+        <div class="text-center mb-3"
+           >
+          <app-button [buttonText]="'Cadastrar novo cliente'"
+          [buttonStyle]="'bg-black'"
+
+          (buttonClicked)="btnClicked()"
+          data-bs-toggle="modal" data-bs-target="#exampleModal"
+
+
+          >
+
+          </app-button>
+
+
+          <app-button [buttonText]="''"
+          [buttonStyle]="'bg-white'"
+
+          (buttonClicked)="btnClicked()"
+          iconText=""
+          iconClass="bi bi-download"
+          iconColor="#000"
+          iconSize="25px">
+
+          </app-button>
+
+
+        </div>
+
+        <!--input de busca-->
+        <div class="row justify-content-center mb-3">
+          <div class="col-12 text-center">
+
+            <app-input [placeholderText]="'buscar por nome,conta e cpf'"
+            type="search" [inputStyle]="'inputSearch'"
+
+            >
+
+            </app-input>
+
+          </div>
+
+        </div>
+        <!--Accordion-->
+        <div class="accordion-content">
+          <app-accordion>
+
+          </app-accordion>
+
+           <!--Icons-->
+           <div class="menu-icons mx-auto mt-5"
+           >
+            <app-button [buttonText]="''"
+
+            [buttonStyle]="'bg-white'"
+
+            (buttonClicked)="btnClicked()"
+            iconText=""
+            iconClass="bi bi-files"
+            iconColor="#000"
+            iconSize="25px">
+
+            </app-button>
+
+            <app-button [buttonText]="''"
+            [buttonStyle]="'bg-white'"
+
+            (buttonClicked)="btnClicked()"
+            iconText=""
+            iconClass="bi bi-clipboard-data"
+            iconColor="#000"
+            iconSize="25px">
+
+            </app-button>
+
+            <app-button [buttonText]="''"
+            [buttonStyle]="'bg-white'"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (buttonClicked)="btnClicked()"
+
+            iconText=""
+            iconClass="bi bi-pencil-square"
+            iconColor="#000"
+            iconSize="25px">
+
+
+            </app-button>
+
+          </div>
+           <div class="menu-breadcrumbs">
+            <app-breadcrumbs>
+
+            </app-breadcrumbs>
+           </div>
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <!--Desktop-->
+    <div class="align-items-center justify-content-start desktop">
+      <app-menu-lateral-main></app-menu-lateral-main>
+
+      <div class="d-none d-xl-block col-12 ms-0 me-0">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-table">
+         <div class="container-fluid">
+           <a class="navbar-brand" href="#">
+             <img src="/images/Group 1000005948.svg">
+           </a>
+           <div class="d-flex icons-navbar">
+             <app-button-navbar
+
+             iconText=""
+             iconClass="bi bi-bell"
+             iconColor="#fff"
+             iconSize="20px"
+             (buttonClicked)="btnClicked()"
+             >
+
+
+             </app-button-navbar>
+             <app-button-navbar
+
+             iconText=""
+             iconClass="bi bi-person"
+             iconColor="#fff"
+             iconSize="20px"
+             (buttonClicked)="btnClicked()"
+             >
+
+
+             </app-button-navbar>
+           </div>
+
+         </div>
+
+        </nav>
+
+        <div class="row align-items-center justify-content-start menuBreadcrumbsTable">
+          <div class="col-4">
+            <app-breadcrumbs>
+
+            </app-breadcrumbs>
+          </div>
+
+        </div>
+
+        <div class="d-flex justify-content-between titlecontentTable">
+          <div class="align-items-center d-flex">
+            <app-button
+            [buttonText]="''"
+            [buttonStyle]="'bg-white'"
+            [iconClass]="'bi bi-arrow-left'"
+            [iconColor]="'#000'"
+            >
+
+            </app-button>
+            <p class="titleTable">Cadastro de Clientes nas Carteiras Administradas</p>
+          </div>
+
+           <div class="align-items-center">
+            <app-button
+            [buttonText]="''"
+            [buttonStyle]="'bg-white'"
+            [iconClass]="'bi bi-download'"
+            [iconColor]="'#000'">
+
+            </app-button>
+
+            <app-button
+            [buttonText]="'Cadastrar novo cliente'"
+            [buttonStyle]="'bg-black'"
+            [iconClass]="''"
+            [iconColor]="''"
+            (buttonClicked)="btnClicked()"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+            </app-button>
+           </div>
+
+        </div>
+
+        <!--component table-->
+        <app-table>
+
+        </app-table>
+        <!--fim component table-->
+
+     </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!--modal-->
+<app-modal></app-modal>
+<app-modalmenutabela></app-modalmenutabela>

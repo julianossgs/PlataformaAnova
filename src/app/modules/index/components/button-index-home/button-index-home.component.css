@@ -1,0 +1,14 @@
+.btn{
+  background-color: transparent;
+  display: flex;
+}
+
+.btn-home{
+  font-weight: bold;
+  border: none;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 16px;
+}

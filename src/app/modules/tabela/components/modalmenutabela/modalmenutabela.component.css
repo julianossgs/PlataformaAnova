@@ -1,0 +1,8 @@
+.modal-dialog-right {
+  position: fixed;
+  top: 250px;
+  right: 75px;
+  margin: 0;
+  width: 220px; /* Ajuste conforme necessário */
+  height: 165px; /* Para ocupar toda a altura da tela */
+}

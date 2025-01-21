@@ -1,0 +1,40 @@
+<!-- <form class="row" action="" id="">
+  <div class="form-group mb-3">
+    <input class="form-control" id="" type="email" placeholder="Email" required />
+
+  </div>
+
+
+  <div class="form-group col-12 text-start">
+
+     <app-button
+     [buttonText]="'Solicitar'">
+
+     </app-button>
+  </div>
+</form> -->
+
+<form class="row needs-validation" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group mb-3">
+    <input
+      class="form-control"
+      formControlName="email"
+      type="email"
+      placeholder="Email"
+      required
+      [class.is-invalid]="registerForm.get('email')?.errors && registerForm.get('email')?.touched"
+    />
+    <!-- Exibição de erros de validação -->
+    <div class="has-validation" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="text-danger">
+      <small *ngIf="registerForm.get('email')?.errors?.['required']">O campo email é obrigatório.</small>
+      <small *ngIf="registerForm.get('email')?.errors?.['email']">Por favor, insira um email válido.</small>
+    </div>
+  </div>
+
+  <div class="form-group col-12 text-start">
+    <app-button [buttonText]="'Solicitar'"
+    >
+  </app-button>
+  </div>
+</form>
+

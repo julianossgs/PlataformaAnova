@@ -1,0 +1,19 @@
+/*css mobile*/
+
+.bg-action-table{
+  height: 26px;
+  width: 60px;
+  border-radius: 25px;
+  color:#fff;
+  background-color: green;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.bg-action-table-not{
+  background-color:#de3d40;
+}
+

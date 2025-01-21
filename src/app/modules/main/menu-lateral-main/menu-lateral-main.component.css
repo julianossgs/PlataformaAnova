@@ -1,0 +1,40 @@
+/* .menuLateral{
+  background-color: #fff;
+  height: 100%;
+
+}
+
+.listMenu{
+  margin: 80px 0px 0 0;
+  width:4rem;
+}
+
+.listMenu li{
+  list-style: none;
+
+} */
+
+/* .listMenu i{
+  color: black;
+} */
+
+.navbar {
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  width: 4.8rem;
+  background-color: #f1f1f1;
+}
+
+.navbar-toggler{
+  margin-top: -255px;
+  border: none;
+}
+
+.navbar-toggler-icon:focus{
+  outline: none;
+}
+
+.offcanvas-header{
+  margin-top: 5rem;
+}

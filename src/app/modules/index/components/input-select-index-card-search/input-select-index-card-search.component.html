@@ -1,0 +1,10 @@
+<select class="form-select"
+[id]="inputSelectId"
+required>
+  <option selected>{{selectedText}}</option>
+  <option *ngFor="let itens of listItems">
+
+    {{itens.name}}
+  </option>
+
+</select>

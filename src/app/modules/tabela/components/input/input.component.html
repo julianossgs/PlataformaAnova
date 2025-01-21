@@ -1,0 +1,20 @@
+
+<input class="form-control custom-placeholder"
+ [id]="inputId"
+ [type]="type"
+ [maxlength]="'25'"
+ [minlength]="'1'"
+ placeholder="{{placeholderText}}"
+ [required]="true"
+ 
+ [(ngModel)] = "nameInput"
+
+
+ [class]="{
+  'inputSearch':inputStyle ==='inputSearch' ? true:false
+
+}"/>
+
+
+
+

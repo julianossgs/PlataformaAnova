@@ -1,0 +1,22 @@
+/*css principal*/
+.btn{
+  border-radius: 12px;
+  height: 40px;
+  width: 150px;
+  margin-right: 8px;
+}
+
+/*css auxiliar botões*/
+.bg-black-modal{
+  background-color: #212121;
+  color: #fff;
+}
+
+.bg-white-modal{
+  background-color: #fff;
+  border:1px solid #212121;
+}
+
+
+
+/*fim css auxiliar dos botões*/

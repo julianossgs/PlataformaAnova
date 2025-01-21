@@ -1,0 +1,29 @@
+<div class="tableContent">
+  <table class="table table-striped table-hover table-borderless rounded-3">
+    <thead class="text-center">
+      <tr>
+
+        <th class="col-name">Nome</th>
+        <th class="col-contrato">Contrato Assinado</th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+      <tr class="row-height" *ngFor="let user of users;let i = index">
+
+        <td>{{user.Nome}}</td>
+        <td>
+          <app-button-index-table [buttonText]="'Sim'"
+           [buttonStyle]="'bg-action-table'"
+          ></app-button-index-table>
+
+        </td>
+
+        <td>
+
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
