@@ -1,0 +1,27 @@
+.cardHome{
+  margin-bottom: 0px;
+  background-color: #f1f1f1;
+}
+
+.cardIndexHome{
+  width: auto;
+  height: 3rem;
+  background-color: #f1f1f1;
+  margin-top: 3px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom:5px;
+  padding: 0;
+}
+
+@media (min-width: 1200px) {
+  .cardHome{
+    margin-bottom: -15px;
+    margin-left: -18px;
+  }
+
+  .cardIndexHome{
+    margin: 0 0 0 0;
+    padding:0;
+  }
+}

@@ -1,0 +1,8 @@
+/*css mobile*/
+
+/*css principal*/
+.btn:focus{
+  border: none;
+  outline: none;
+  box-shadow: none;
+}

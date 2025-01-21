@@ -1,0 +1,73 @@
+<div class="tableContent">
+  <table class="table table-striped table-hover table-borderless rounded-3">
+    <thead>
+      <tr>
+        <th class="text-center ps-4">
+          <app-check-box-tabela [checked]="selectAll"
+          (checkedChange)="toggleSelectAll()">
+
+          </app-check-box-tabela>
+        </th>
+
+        <th class="col-id">
+          Id</th>
+        <th>Conta</th>
+        <th class="col-name">Nome</th>
+        <th class="col-carteira">Carteira</th>
+        <th>Corretora</th>
+        <th class="col-cpf">CPF/CNPJ</th>
+        <th class="col-pl">PL Inicial</th>
+        <th class="col-data">Data de registro</th>
+        <th class="col-contrato">Contrato Enviado</th>
+        <th class="col-contrato">Contrato Assinado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody class="text-center">
+
+      <tr class="row-height" *ngFor="let user of users;let i = index">
+        <td class="text-center ps-4">
+          <app-check-box-tabela [checked]="user.selected"
+          (checkedChange)="toggleSelection(user)">
+
+          </app-check-box-tabela>
+        </td>
+        <td>{{user.ID}}</td>
+        <td>{{user.Conta}}</td>
+        <td>{{user.Nome}}</td>
+        <td>{{user.Carteira}}</td>
+        <td>{{user.Corretora}}</td>
+        <td>{{user.CPFCNPJ}}</td>
+        <td>{{user.PLInicial}}</td>
+        <td>{{user.Dataderegistro}}</td>
+
+        <td>
+          <app-button [buttonText]="'Sim'"
+           [buttonStyle]="'bg-action-table'"
+          ></app-button>
+
+        </td>
+        <td>
+          <app-button [buttonText]="'Sim'"
+          [buttonStyle]="'bg-action-table'">
+
+          </app-button>
+        </td>
+        <td>
+          <app-button [buttonStyle]="'bg-menu-table'"
+          [buttonText]="''"
+          [iconClass]="'bi bi-three-dots-vertical'"
+          [iconSize]="'13px'"
+          [iconColor]="'#000'"
+          data-bs-toggle="modal" data-bs-target="#modalMenuTable">
+
+          </app-button>
+        </td>
+      </tr>
+
+
+    </tbody>
+  </table>
+</div>
+
+

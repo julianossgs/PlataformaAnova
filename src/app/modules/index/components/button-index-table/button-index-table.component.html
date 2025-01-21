@@ -1,0 +1,10 @@
+<button
+type="submit"
+class="btn"
+
+ [class]="{
+  'bg-action-table':buttonStyle === 'bg-action-table'?true:false,
+}"
+   (click)="ButtonClick()" >
+    {{buttonText}}
+</button>

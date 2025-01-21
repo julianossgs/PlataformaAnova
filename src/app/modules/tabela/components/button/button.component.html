@@ -1,0 +1,24 @@
+<button
+type="button"
+class="btn"
+
+ [class]="{
+  'bg-black':buttonStyle === 'bg-black'?true:false,
+  'bg-white':buttonStyle === 'bg-white'?true:false,
+  'bg-action-table':buttonStyle === 'bg-action-table'?true:false,
+  'bg-menu-table':buttonStyle === 'bg-menu-table'?true:false,
+  'bg-01-menu-modal-table':buttonStyle === 'bg-01-menu-modal-table'?true:false,
+  'bg-02-menu-modal-table':buttonStyle === 'bg-02-menu-modal-table'?true:false,
+  'bg-3-menu-modal-table':buttonStyle === 'bg-03-menu-modal-table'?true:false
+ }"
+    >
+          <app-icon [iconClass]="iconClass"
+           [cor]="iconColor"
+           [size]="iconSize"
+           >
+          </app-icon>
+
+    {{buttonText}}
+
+
+</button>

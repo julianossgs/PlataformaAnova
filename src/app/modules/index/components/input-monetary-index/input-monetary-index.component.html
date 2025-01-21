@@ -1,0 +1,20 @@
+<input class="form-control custom-placeholder"
+ [id]="inputId"
+ [type]="type"
+ maxlength=""
+ minlength=""
+ placeholder="{{placeholderText}}"
+ required
+ [(ngModel)] = "nameInput"
+
+ [class]="{
+  'input01':inputStyle ==='input01' ? true:false,
+  'input02':inputStyle ==='input02' ? true:false,
+  'input03':inputStyle ==='input03' ? true:false,
+  'input04':inputStyle ==='input04' ? true:false,
+}"
+
+ currencyMask [options]="{prefix: 'R$' ,thousands: '.',
+ decimal:',',align:'left',allowNegative:false
+}"
+/>

@@ -1,0 +1,112 @@
+/*css principal*/
+
+.menu-mobile{
+  margin: 0.8rem 0 0 0;
+  padding: 20px 0px 0px 0px;
+  height: auto;
+
+}
+
+.content-title{
+  width: auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 11px;
+
+}
+
+.title{
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.accordion-content{
+  padding: 0 10px 0 10px;
+  margin: 0 20px 0 20px;
+
+}
+
+.menu-icons{
+  border: 1px solid #ebebeb;
+  border-radius: 8px;
+  width: 250px;
+  height: auto;
+  padding: 6px 5px 6px 36px;
+  margin-bottom: 5%;
+
+}
+
+.menu-breadcrumbs{
+  margin-bottom: 24%;
+}
+
+/*Css Desktop*/
+
+/* css navbar/tabela*/
+.desktop{
+  background-color: #f1f1f1;
+  padding-left: 6rem;
+  padding-right: 1rem;
+}
+
+.navbar-table{
+  background-color: black;
+  height: 80px;
+
+}
+
+.navbar-table img{
+  margin-left: 32px;
+}
+
+.icons-navbar{
+  margin-right: 32px;
+}
+
+.menuBreadcrumbsTable{
+  height: 45px;
+  margin-top: 105px;
+
+}
+
+.titlecontentTable{
+  margin: 0 11px 30px 11px;
+
+}
+
+.titleTable{
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 13px;
+}
+/*fim css desktop*/
+
+/*medias*/
+@media(min-width: 576px){
+  .accordion-content{
+    padding: 0 10px 0 10px;
+    margin: 0 60px 0 60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-title{
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-bottom: 15px;
+  }
+
+  .title{
+    font-size: 19px;
+    line-height: 24px;
+
+  }
+
+  .accordion-content{
+    padding: 0 8px 0 8px;
+    margin: 0 50px 0 50px;
+  }
+}
+
+

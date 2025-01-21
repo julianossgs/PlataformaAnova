@@ -1,0 +1,30 @@
+/*css modal*/
+
+.modal-dialog-custom{
+  max-width: 495px;
+  height: auto;
+}
+
+.modal-title{
+  margin-left:150px;
+  border: 1px solid red;
+}
+
+.btn-close{
+  border: 1px solid blue;
+}
+
+.modal-body-custom{
+  padding: 35px 40px 35px 40px;
+}
+
+span{
+  position: relative;
+}
+i{
+  font-size: 10px;
+}
+
+.form-label{
+  font-size: 14px;
+}

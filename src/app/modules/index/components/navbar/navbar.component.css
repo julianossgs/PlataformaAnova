@@ -1,0 +1,27 @@
+/*css mobile*/
+
+/*css navbar*/
+.navbar{
+  background-color: #212121;
+  border-radius: 11px;
+  margin: 22px 5px 5px 5px;
+  height: auto;
+}
+
+.formNavbar{
+  margin: 0px;
+
+}
+
+.label01{
+  font-size: 12px;
+  margin-left: 14px;
+  margin-bottom: -5px;
+}
+
+.label02{
+  font-size: 10px;
+  margin-left: 14px;
+  margin-bottom: -5px;
+}
+/*fim css mobile*/

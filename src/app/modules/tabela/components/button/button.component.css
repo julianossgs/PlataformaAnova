@@ -1,0 +1,65 @@
+/*css principal*/
+.btn{
+  border-radius: 12px;
+  width: 206px;
+  height: 48px;
+  margin-right: 9px;
+}
+
+/*css auxiliar botões*/
+.bg-black{
+  background-color: #212121;
+  color: #fff;
+}
+
+.bg-white{
+  background-color: #fff;
+  height: 48px;
+  width: 50px;
+  border:1px solid #e2e4e9
+}
+
+.bg-action-table{
+  height: 26px;
+  width: 60px;
+  border-radius: 25px;
+  color:#fff;
+  background-color: green;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.bg-menu-table{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  height: 25px;
+  width: 25px;
+  color: #212121;
+  margin: auto;
+}
+
+.bg-01-menu-modal-table{
+  width: 140px;
+  font-size: 14px;
+  color: #212121;
+  align-items: start;
+  padding-left: 9px;
+  border: none;
+}
+
+.bg-01-menu-modal-table:hover{
+  transform: scale(1.03);
+}
+
+
+
+
+
+/*fim css auxiliar dos botões*/
+
+

@@ -1,0 +1,20 @@
+
+.form-control{
+  height: 33px;
+  border:1px solid #3f3f3f;
+}
+
+.custom-placeholder{
+  font-size: 14px;
+  color: #2f2f2f;
+}
+
+/*css auxiliar*/
+.inputSearch[type="search"]{
+  padding: 10px;
+  width: 271px;
+  height: 48px;
+  align-items: center;
+  border-radius: 12px;
+
+}

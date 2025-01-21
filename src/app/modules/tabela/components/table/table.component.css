@@ -1,0 +1,55 @@
+.tableContent{
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 12px;
+  margin: 0 8px 25px 8px;
+  padding: 5px;
+}
+
+tr{
+  font-size: 14px;
+
+}
+
+thead{
+  height: 45px;
+}
+
+.row-height{
+  height: 44px;
+}
+
+.col-check{
+  width: 3px;
+}
+
+.col-id{
+  width: 40px;
+}
+
+.col-conta{
+  width: 65px;
+}
+
+.col-carteira{
+  width: 100px;
+}
+
+.col-name{
+  width: 200px;
+}
+
+.col-cpf{
+  width: 145px;
+}
+
+.col-pl{
+  width: 150px;
+}
+
+.col-contrato{
+  width: 145px;
+}
+.col-data{
+  width: 128px;
+}

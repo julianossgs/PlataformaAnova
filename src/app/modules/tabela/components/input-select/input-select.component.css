@@ -1,0 +1,9 @@
+/*CSS*/
+.form-select{
+  border:1px solid #3f3f3f;
+  height: 33px;
+}
+
+select{
+  font-size: 12px;
+}
