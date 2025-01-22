@@ -18,7 +18,11 @@ export function app(): express.Express {
   server.set('views', browserDistFolder);
 
   // Example Express Rest API endpoints
-  // server.get('/api/**', (req, res) => { });
+  server.get('/api', (req, res) => {
+    res.set('Access-Control-Allow-Origin', 'http://vps40250.publiccloud.com.br:5010');
+    res.json({'api': 'response'})
+  });
+
   // Serve static files from /browser
   server.get('**', express.static(browserDistFolder, {
     maxAge: '1y',

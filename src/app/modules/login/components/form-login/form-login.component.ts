@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-login',
@@ -22,15 +23,16 @@ import { HttpClientModule } from '@angular/common/http';
 export class FormLoginComponent {
   isLoginOrRegister = true;
   loginForm: FormGroup;
-  apiUrl = '/api/login'; // Caminho relativo para usar o proxy
+  apiUrl = 'http://vps40250.publiccloud.com.br:5010/api/login'; // Caminho relativo para usar o proxy
   loginMessage = ''; // Mensagem de feedback ao usuário
   isLoading = false; // Controle de estado de carregamento
 
-  constructor(private http:HttpClient, private fb: FormBuilder) {
+  constructor(private http:HttpClient, private fb: FormBuilder,
+    private router: Router) {
     // Criação do formulário reativo
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
     });
   }
 
@@ -50,7 +52,9 @@ export class FormLoginComponent {
             this.isLoading = false;
             this.loginMessage = 'Login realizado com sucesso!';
             console.log('Login realizado com sucesso!', response);
-            // Redirecione ou trate o sucesso aqui
+             // Redirecionar para a página home
+             this.router.navigate(['/home']);
+
           },
           error: (error) => {
             this.isLoading = false;
