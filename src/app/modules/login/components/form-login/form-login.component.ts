@@ -26,7 +26,7 @@ export class FormLoginComponent {
   loginMessage = ''; // Mensagem de feedback ao usuário
   isLoading = false; // Controle de estado de carregamento
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private http:HttpClient, private fb: FormBuilder) {
     // Criação do formulário reativo
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
