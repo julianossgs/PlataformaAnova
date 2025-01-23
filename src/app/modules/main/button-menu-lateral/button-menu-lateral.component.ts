@@ -8,8 +8,10 @@ import { IconComponent } from '../../tabela/components/icon/icon.component';
     styleUrl: './button-menu-lateral.component.css'
 })
 export class ButtonMenuLateralComponent {
-  btnClicked(){
-    alert('teste botão');
+  @Output() buttonClicked = new EventEmitter<void>(); // Emissor de evento
+
+  btnClicked() {
+      this.buttonClicked.emit(); // Emite o evento ao clicar
   }
 
 @Input() iconClass:string='';

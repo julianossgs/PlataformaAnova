@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonMenuLateralComponent } from "../button-menu-lateral/button-menu-lateral.component";
-
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-menu-lateral-main',
     imports: [ButtonMenuLateralComponent],
@@ -8,7 +8,11 @@ import { ButtonMenuLateralComponent } from "../button-menu-lateral/button-menu-l
     styleUrl: './menu-lateral-main.component.css'
 })
 export class MenuLateralMainComponent {
-  btnClicked(){
-    alert('teste botão');
-  }
+  // Injeção do Router
+  constructor(private router: Router) {}
+
+  // Redireciona para a rota
+  btnClicked() {
+    this.router.navigate(['/tabela']);
+}
 }

@@ -7,7 +7,7 @@
 }
 
 tr{
-  font-size: 14px;
+  font-size: 12px;
 
 }
 
@@ -16,27 +16,39 @@ thead{
 }
 
 .row-height{
-  height: 44px;
+  height: 40px;
 }
 
 .col-check{
   width: 3px;
 }
 
-.col-id{
+.inputSearchTable{
+  height: 25px;
+  text-align: start;
+  font-size: 12px;
+}
+
+
+/* .text-truncate{
+  max-width: 150px;
+
+} */
+
+/* .col-id{
   width: 40px;
-}
+} */
 
-.col-conta{
+/* .col-conta{
   width: 65px;
-}
+} */
 
-.col-carteira{
+/* .col-carteira{
   width: 100px;
-}
+} */
 
-.col-name{
-  width: 200px;
+/* .col-name{
+  max-width: 80px;
 }
 
 .col-cpf{
@@ -52,4 +64,12 @@ thead{
 }
 .col-data{
   width: 128px;
+} */
+
+ .table .truncate {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
