@@ -11,60 +11,11 @@ tr{
 
 }
 
-thead{
-  height: 45px;
-}
-
-.row-height{
-  height: 40px;
-}
-
-.col-check{
-  width: 3px;
-}
-
 .inputSearchTable{
-  height: 25px;
+  height: 28px;
   text-align: start;
   font-size: 12px;
 }
-
-
-/* .text-truncate{
-  max-width: 150px;
-
-} */
-
-/* .col-id{
-  width: 40px;
-} */
-
-/* .col-conta{
-  width: 65px;
-} */
-
-/* .col-carteira{
-  width: 100px;
-} */
-
-/* .col-name{
-  max-width: 80px;
-}
-
-.col-cpf{
-  width: 145px;
-}
-
-.col-pl{
-  width: 150px;
-}
-
-.col-contrato{
-  width: 145px;
-}
-.col-data{
-  width: 128px;
-} */
 
  .table .truncate {
   max-width: 100%;

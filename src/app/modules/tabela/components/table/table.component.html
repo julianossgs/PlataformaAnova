@@ -50,31 +50,38 @@
         <th></th>
       </tr>
     </thead>
-    <tbody class="text-start">
+    <tbody class="text-star">
       <tr *ngFor="let user of filteredUsers">
-        <!-- <td class="text-center ps-4">
-          <app-check-box-tabela [checked]="user.selected" (checkedChange)="toggleSelection(user)"></app-check-box-tabela>
-        </td> -->
-        <td>{{ user.ID }}</td>
-        <td>{{ user.Conta }}</td>
-        <td class="text-truncate overflow-hidden" style="max-width: 180px; white-space: nowrap;
+        <td class="align-middle">{{ user.ID }}</td>
+        <td class="align-middle">{{ user.Conta }}</td>
+        <td class="align-middle text-truncate overflow-hidden" style="max-width: 180px; white-space: nowrap;
         height: 52px;">{{ user.Nome }}</td>
-        <td class="text-truncate overflow-hidden" style="max-width: 100px; white-space: nowrap;
+        <td class="align-middle text-truncate overflow-hidden" style="max-width: 100px; white-space: nowrap;
         height: 52px;">{{ user.Carteira }}</td>
-        <td>{{ user.Corretora }}</td>
-        <td>{{ user.CPFCNPJ | cpfCnpj}}</td>
-        <td>{{ user.PLInicial }}</td>
-        <td>{{ user.Dataderegistro }}</td>
-        <td>
+        <td class="align-middle">{{ user.Corretora }}</td>
+        <td class="align-middle">{{ user.CPFCNPJ | cpfCnpj}}</td>
+        <td class="align-middle">{{ user.PLInicial }}</td>
+        <td class="align-middle">{{ user.Dataderegistro }}</td>
+        <td class="align-middle">
           <app-button [buttonText]="'Sim'" [buttonStyle]="'bg-action-table'"></app-button>
         </td>
-        <td>
+        <td class="align-middle">
           <app-button [buttonText]="'Sim'" [buttonStyle]="'bg-action-table'"></app-button>
         </td>
-        <td>
+        <td class="align-middle">
           <app-button [buttonStyle]="'bg-menu-table'" [buttonText]="''" [iconClass]="'bi bi-three-dots-vertical'" [iconSize]="'13px'" [iconColor]="'#000'" data-bs-toggle="modal" data-bs-target="#modalMenuTable"></app-button>
         </td>
       </tr>
     </tbody>
+    <!-- Componente de paginação -->
+   <app-pagination
+   [totalItems]="filteredUsers.length"
+   [itemsPerPage]="itemsPerPage"
+   [currentPage]="currentPage"
+   (pageChange)="onPageChange($event)"
+    >
+    </app-pagination>
   </table>
+
+
 </div>

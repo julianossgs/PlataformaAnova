@@ -7,11 +7,10 @@
 
 .modal-title{
   margin-left:150px;
-  border: 1px solid red;
 }
 
 .btn-close{
-  border: 1px solid blue;
+  font-size: 11px;
 }
 
 .modal-body-custom{

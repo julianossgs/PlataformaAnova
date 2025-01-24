@@ -2,21 +2,27 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CheckBoxTabelaComponent } from '../check-box-tabela/check-box-tabela.component';
 import { ButtonComponent } from '../../../tabela/components/button/button.component';
 import { CpfCnpjPipe } from '../../../../_pipes/cpf-cnpj.pipe';
-
+import { PaginationComponent } from '../../../main/pagination/pagination.component';
 
 @Component({
   selector: 'app-table',
   standalone: true,
   imports: [CommonModule, FormsModule,
         ButtonComponent,
-        CpfCnpjPipe],
+        CpfCnpjPipe,PaginationComponent],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
+
+  //paginação
+
+  paginatedUsers: any[] = []; // Dados exibidos na página atual
+  itemsPerPage: number = 10; // Itens por página
+  currentPage: number = 1; // Página atual
+
   users: any[] = []; // Dados completos
   filteredUsers: any[] = []; // Dados filtrados exibidos na tabela
   selectAll: boolean = false;
@@ -59,6 +65,7 @@ export class TableComponent {
           selected: false
         }));
         this.filteredUsers = [...this.users]; // Inicializa os dados filtrados
+        this.updatePaginatedUsers();
       },
       error: (err) => {
         console.error('Erro ao carregar dados da API:', err);
@@ -80,18 +87,21 @@ export class TableComponent {
         (!this.filters.dataRegistro || user.Dataderegistro.includes(this.filters.dataRegistro))
       );
     });
+    this.updatePaginatedUsers();
   }
 
-  // Função para "Selecionar todos"
-  // toggleSelectAll(): void {
-  //   this.selectAll = !this.selectAll;
-  //   this.users.forEach((user) => (user.selected = this.selectAll));
-  // }
+  // Atualiza os itens exibidos na página atual
+  updatePaginatedUsers(): void {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedUsers = this.filteredUsers.slice(startIndex, endIndex);
+  }
 
-  // Função para selecionar/desmarcar um usuário
-  // toggleSelection(user: any): void {
-  //   user.selected = !user.selected;
-  //   this.selectAll = this.users.every((user) => user.selected);
-  // }
+  // Manipula a mudança de página
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.updatePaginatedUsers();
+  }
+
 }
 

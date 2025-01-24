@@ -6,25 +6,32 @@
   <div class="modal-dialog  modal-dialog-scrollable modal-dialog-custom">
     <div class="modal-content col-10 col-md-8">
 
-          <div class="modal-header border-bottom border-dark-subtle mb-1">
-            <p class="modal-title mx-auto fs-5 fw-bold" id="modalTitle">
-               Cadastrar cliente
+          <div class="modal-header border-bottom border-dark-subtle mb-1
+          d-flex justify-content-center">
+            <p class="modal-title fs-5 fw-bold text-center" id="modalTitle">
+              {{ modalTitle }}
             </p>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body modal-body-custom border-bottom border-dark-subtle">
-            <app-form></app-form>
+            <app-form
+            [isEditMode]="isEditMode"
+            (formSubmit)="onSave($event)">
+
+            </app-form>
           </div>
 
         <div class="modal-footer d-flex justify-content-center align-items-center ">
-          <app-button-modal [buttonText]="'Salvar'"
-          [buttonStyle]="'bg-black-modal'">
+          <app-button-modal [buttonText]="isEditMode ? 'Salvar Alterações' : 'Salvar'"
+          [buttonStyle]="'bg-black-modal'"
+          (click)="onSave(null)">
 
           </app-button-modal>
           <app-button-modal [buttonText]="'Fechar'"
           [buttonStyle]="'bg-white-modal'"
-          data-bs-dismiss="modal">
+          data-bs-dismiss="modal"
+          (click)="onClose()">
 
           </app-button-modal>
 

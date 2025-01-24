@@ -1,0 +1,7 @@
+.pagination {
+  margin: 1rem 0;
+}
+
+.page-item .page-link {
+  cursor: pointer;
+}
