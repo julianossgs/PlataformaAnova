@@ -1,4 +1,4 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnInit,Input,Output,EventEmitter} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, PatternValidator, Validators } from '@angular/forms';
 import { InputMonetaryComponent } from '../input-monetary/input-monetary.component';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {NgxMaskDirective,provideNgxMask} from 'ngx-mask'
 import { ButtonModalComponent } from '../button-modal/button-modal.component';
 // import { BrowserModule } from '@angular/platform-browser';
+import { AbstractControl } from '@angular/forms';
+import { ValidationErrors,ValidatorFn } from '@angular/forms';
+import { RgFormatPipe } from '../../../../_pipes/rg-format.pipe';
+
 
 
 
@@ -17,7 +21,8 @@ import { ButtonModalComponent } from '../button-modal/button-modal.component';
         InputMonetaryComponent,
         CommonModule,
         ReactiveFormsModule,
-        NgxMaskDirective
+        NgxMaskDirective,
+        RgFormatPipe
     ],
     providers: [provideNgxMask()],
     templateUrl: './form.component.html',
@@ -25,6 +30,9 @@ import { ButtonModalComponent } from '../button-modal/button-modal.component';
 })
 
 export class FormComponent implements OnInit{
+  @Input() isEditMode: boolean = false; // Modo do formulário
+  @Input() initialData: any = null; // Dados iniciais para edição
+  @Output() formSubmit = new EventEmitter<any>(); // Evento para enviar o formulário
 
    form:FormGroup = new FormGroup({});
 
@@ -38,28 +46,63 @@ export class FormComponent implements OnInit{
     this.initilizeForm();
    }
 
-   cpfCnpjValidator(){
-    return(control:any)=>{
-    const cpfCnpj = control.value;
-    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
-    const cnpjRegex = /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/;
+   //validador cpf/cnpj
+   cpfCnpjValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const cpfCnpj = control.value ? control.value.replace(/\D/g, '') : ''; // Remove caracteres não numéricos
 
-    if(cpfRegex.test(cpfCnpj) || cnpjRegex.test(cpfCnpj)){
-       return null; //válido
-    }
-    else{
-      return { cpfCnpjInvalid: true }; // inválido
-    }
+      const cpfRegex = /^\d{11}$/; // CPF: 11 dígitos numéricos
+      const cnpjRegex = /^\d{14}$/; // CNPJ: 14 dígitos numéricos
+
+      if (!cpfCnpj || cpfRegex.test(cpfCnpj) || cnpjRegex.test(cpfCnpj)) {
+        return null; // Válido
+      }
+      return { cpfCnpjInvalid: true }; // Inválido
+    };
+  }
+
+  //fim validador cpf/cnpj
+
+  //Validador telefone
+  phoneValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+      const mobileRegex = /^\(\d{2}\)\d{5}-\d{4}$/; // Formato para celular
+      const landlineRegex = /^\(\d{2}\)\d{4}-\d{4}$/; // Formato para telefone fixo
+
+      if (!value || mobileRegex.test(value) || landlineRegex.test(value)) {
+        return null; // Válido
+      }
+
+      return { invalidPhone: true }; // Inválido
+    };
+  }
+  //fim validador telefone
+
+
+  //Validador PL para verificar se o valor é maior que zero
+   plGreaterThanZeroValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    if (!control.value) return null; // Permite o campo vazio para o Validators.required tratar
+
+    // Remove máscaras ou formatações monetárias, se existirem
+    const rawValue = control.value.replace(/[^\d,-]/g, '').replace(',', '.');
+    const numericValue = parseFloat(rawValue);
+
+    // Valida se o número é maior que zero
+    return numericValue > 0 ? null : { mustBeGreaterThanZero: true };
   };
- }
+}
+
+  //Fim Validador PL
 
 
    initilizeForm(){
     this.form = this.fb.group({
 
-      cep:['',[Validators.required,
-        Validators.maxLength(9),
-        Validators.pattern('^\\d{5}-\d{3}$')
+      cep: ['', [
+        Validators.required,
+        Validators.pattern(/^\d{5}-\d{3}$/) // Valida o formato 00000-000
       ]],
 
       conta:['',[Validators.required,
@@ -91,13 +134,13 @@ export class FormComponent implements OnInit{
         pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
       ]],
 
-      phone:['',[Validators.required,
-
-      ]],
+      phone: ['', [Validators.required, this.phoneValidator()]],
 
       end:['',[Validators.required]],
 
-      pl:['',[Validators.required]],
+      pl: ['', [Validators.required, this.plGreaterThanZeroValidator()]],
+
+      rg:['', Validators.pattern(/^\d{2}\.\d{3}\.\d{3}-\d{1}$/)],
 
       emissor: ['', [
 
@@ -113,13 +156,15 @@ export class FormComponent implements OnInit{
 
   }
 
-  submitForm(){
-    if(this.form.valid){
+  submitForm() {
+    if (this.form.valid) {
       console.log(this.form.value);
-      this.form.reset
-
+      this.form.reset();
+    } else {
+      this.form.markAllAsTouched();
     }
+  }
 
-   }
+  
 
 }

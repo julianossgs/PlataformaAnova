@@ -11,7 +11,7 @@ import { TableComponent } from "../../components/table/table.component";
 import { ModalmenutabelaComponent } from "../../components/modalmenutabela/modalmenutabela.component";
 import { InputComponent } from "../../../tabela/components/input/input.component";
 import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-lateral-main.component';
-
+import { PaginationComponent } from '../../../main/pagination/pagination.component';
 @Component({
     selector: 'app-home-tabela',
     imports: [ButtonComponent,
@@ -23,11 +23,12 @@ import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-l
         TableComponent,
         ModalmenutabelaComponent,
         InputComponent,
-        MenuLateralMainComponent],
+        MenuLateralMainComponent,PaginationComponent],
     templateUrl: './home-tabela.component.html',
     styleUrl: './home-tabela.component.css'
 })
 export class HomeTabelaComponent {
+  
   btnClicked(){
     alert('Teste botão');
   }

@@ -40,7 +40,7 @@ novalidate action="" (ngSubmit)="submitForm()"
     maxlength="100"
     formControlName="nome"
     [class.is-invalid]="form.get('nome')?.touched && form.get('nome')?.invalid"
-    placeholder="Ex.: Nome"
+    placeholder=""
     />
     <div class="invalid-feedback" *ngIf="form.get('nome')?.touched">
       <span *ngIf="form.get('nome')?.hasError('required')">
@@ -62,27 +62,21 @@ novalidate action="" (ngSubmit)="submitForm()"
   <div class="col-md-6 mb-3 form-group">
     <span><i class="bi bi-asterisk text-danger me-2"></i></span>
     <label for="cpfcnpj" class="form-label">CPF ou CNPJ</label>
-    <input class="text-center form-control custom-placeholder is-invalid" type="text"
-    id="cpfcnpj"
-    formControlName="cpfcnpj"
-    required
-    [mask]="form.get('cpfcnpj')?.value.length < 12 ? '000.000.000-00' : '00.000.000/0000-00'"
+    <input
+     type="text"
+     formControlName="cpfcnpj"
+     [mask]="form.get('cpfcnpj')?.value?.length < 12 ? '000.000.000-00' : '00.000.000/0000-00'"
+     [dropSpecialCharacters]="false"
+     class="form-control text-center"
+     [class.is-invalid]="form.get('cpfcnpj')?.invalid && form.get('cpfcnpj')?.touched"
+     />
+     <div class="invalid-feedback" *ngIf="form.get('cpfcnpj')?.invalid &&   form.get('cpfcnpj')?.touched">
+     <span *ngIf="form.get('cpfcnpj')?.hasError('cpfCnpjInvalid')">CPF/CNPJ inválido!</span>
+     <span *ngIf="form.get('cpfcnpj')?.hasError('required')">Campo obrigatório!</span>
+     </div>
 
-    [class.is-invalid]="form.get('cpfcnpj')?.errors
-    && form.get('cpfcnpj')?.touched"
-    />
 
-    <div class="invalid-feedback"
-    *ngIf="form.get('cpfcnpj')?.hasError('required')">
-      Campo obrigatório!
-    </div>
-    <!-- <div class="invalid-feedback"
-    *ngIf="form.get('cpfcnpj')?.invalid || form.get('cpfcnpj')?.touched
-    ">
-      CPF/CNPJ inválido!
-    </div> -->
-
-    </div>
+  </div>
 
 
   <!--Hub-->
@@ -154,50 +148,49 @@ novalidate action="" (ngSubmit)="submitForm()"
   <div class="col-md-6 mb-3 form-group">
     <span><i class="bi bi-asterisk text-danger me-2"></i></span>
     <label for="phone" class="form-label">Telefone</label>
-    <input class="text-center form-control
-    custom-placeholder is-invalid"
-    type="text"
-    id="phone"
-    formControlName="phone"
-    [class.is-invalid]="form.get('phone')?.errors &&
-    form.get('phone')?.touched"
-    [mask]="'(00)00000-0000'"
-    placeholder="Ex.: (00)00000-0000"
+    <input
+      class="text-center form-control custom-placeholder"
+      type="text"
+      id="phone"
+      formControlName="phone"
+      [mask]="form.get('phone')?.value?.length > 13 ? '(00)00000-0000' : '(00)0000-0000'"
+      [dropSpecialCharacters]="false"
+      [class.is-invalid]="form.get('phone')?.invalid && form.get('phone')?.touched"
+
+      placeholder=""
     />
     <div class="invalid-feedback" *ngIf="form.get('phone')?.touched">
       <span *ngIf="form.get('phone')?.hasError('required')">
-        Campo obrigatório!.
+        Campo obrigatório!
       </span>
-      <span *ngIf="form.get('phone')?.hasError('pattern')">
-        Informe um telefone válido!.
+      <span *ngIf="form.get('phone')?.hasError('invalidPhone')">
+        Informe um telefone válido (Ex.: (00)00000-0000 ou (00)0000-0000).
       </span>
     </div>
-
   </div>
+
 
   <!--Cep-->
   <div class="col-md-5 mb-3 form-group">
     <span><i class="bi bi-asterisk text-danger me-2"></i></span>
     <label for="cep" class="form-label">CEP</label>
-    <input class="text-center form-control
-    custom-placeholder is-invalid"
-    type="text"
-    id="cep"
-    formControlName="cep"
-    [class.is-invalid]="form.get('cep')?.errors &&
-    form.get('cep')?.touched"
-    mask="00000-000"
-    required/>
-
-    <div class="invalid-feedback"  *ngIf="form.get('cep')?.invalid && form.get('cep')?.touched">
-      <span *ngIf="form.get('cep')?.hasError('required')">
-        Campo obrigatório!.
-      </span>
-      <!-- <span *ngIf="form.get('cep')?.hasError('pattern')">
-        Cep inválido!.
-      </span> -->
+    <input
+      class="text-center form-control custom-placeholder"
+      type="text"
+      id="cep"
+      formControlName="cep"
+      [class.is-invalid]="form.get('cep')?.invalid && form.get('cep')?.touched"
+      [mask]="'00000-000'"
+      [dropSpecialCharacters]="false"
+      placeholder=""
+      required
+    />
+    <div class="invalid-feedback" *ngIf="form.get('cep')?.invalid && form.get('cep')?.touched">
+      <span *ngIf="form.get('cep')?.hasError('required')">Campo obrigatório!</span>
+      <span *ngIf="form.get('cep')?.hasError('pattern')">CEP inválido! O formato correto é 00000-000.</span>
     </div>
   </div>
+
 
   <!--endereço-->
   <div class="col-md-7 mb-3 form-group">
@@ -213,15 +206,20 @@ novalidate action="" (ngSubmit)="submitForm()"
   <div class="col-md-6 mb-3 form-group">
     <span><i class="bi bi-asterisk text-danger me-2"></i></span>
     <label for="pl" class="form-label">PL Inicial</label>
-     <app-input-monetary [type]="'text'"
-     placeholderText=""
-     id="pl"
-     [class.is-invalid]="form.get('pl')?.errors && form.get('pl')?.touched" class="text-center"
-     >
-
-     </app-input-monetary>
-     <div class="invalid-feedback">Campo obrigatório!</div>
+    <app-input-monetary
+      [type]="'text'"
+      placeholderText=""
+      id="pl"
+      formControlName="pl"
+      [class.is-invalid]="form.get('pl')?.invalid && form.get('pl')?.touched"
+      class="text-center"
+    ></app-input-monetary>
+    <div class="invalid-feedback" *ngIf="form.get('pl')?.invalid && form.get('pl')?.touched">
+      <span *ngIf="form.get('pl')?.hasError('required')">Campo obrigatório!</span>
+      <span *ngIf="form.get('pl')?.hasError('nonZero')">O valor deve ser maior que 0,00.</span>
+    </div>
   </div>
+
 
   <!--Div vazia-->
   <div class="col-md-6 mb-3 form-group">
@@ -247,6 +245,7 @@ novalidate action="" (ngSubmit)="submitForm()"
       <option>Casado</option>
       <option>Solteiro</option>
       <option>Divorciado</option>
+      <option>Outros</option>
     </select>
   </div>
 
@@ -275,44 +274,25 @@ novalidate action="" (ngSubmit)="submitForm()"
     />
   </div>
 
-  <!--RG-->
+  <!--Rg-->
   <div class="col-md-6 mb-3 form-group">
-
     <label for="rg" class="form-label">RG</label>
-    <input class="text-center form-control
-    custom-placeholder is-invalid"
-    type="text"
-    id="rg"
-
-    [class.is-invalid]="form.get('rg')?.errors"
-    [mask]="'00.000.000-0'"
+    <input
+      id="rg"
+      type="text"
+      class="text-center form-control custom-placeholder"
+      mask="00.000.000-0"
+      [dropSpecialCharacters]="false"
+      placeholder=""
+      formControlName="rg"
+      [class.is-invalid]="form.get('rg')?.invalid && form.get('rg')?.touched"
     />
-    <div class="invalid-feedback"
-    *ngIf="form.get('rg')?.hasError('pattern')">
-       Informe um RG válido!
+    <div class="invalid-feedback" *ngIf="form.get('rg')?.invalid && form.get('rg')?.touched">
+      <span *ngIf="form.get('rg')?.hasError('pattern')">Formato de RG inválido!</span>
     </div>
   </div>
 
   <!--Orgão emissor-->
-  <!-- <div class="col-md-6 mb-2 form-group">
-
-    <label for="emissor" class="form-label">Órgão Emissor</label>
-    <input class="text-center text-uppercase form-control custom-placeholder is-invalid"
-    type="text"
-    id="emissor"
-    [mask]="'AAA'"
-
-    formControlName="emissor"
-    [class.is-invalid]="form.get('emissor')?.touched && form.get('emissor')?.invalid"
-
-    />
-    <div class="invalid-feedback"
-    *ngIf="form.get('emissor')?.touched && form.get('emissor')?.hasError('pattern')">
-       Campo inválido!
-    </div>
-
-  </div> -->
-
   <div class="col-md-6 mb-2 form-group">
     <label for="emissor" class="form-label">Órgão Emissor</label>
     <input
@@ -322,7 +302,7 @@ novalidate action="" (ngSubmit)="submitForm()"
       formControlName="emissor"
       [mask]="'AAA'"
       [class.is-invalid]="form.get('emissor')?.touched && form.get('emissor')?.invalid"
-      placeholder="Ex.: SSP"
+      placeholder=""
     />
     <div class="invalid-feedback" *ngIf="form.get('emissor')?.touched">
       <span *ngIf="form.get('emissor')?.hasError('minlength')">
@@ -333,10 +313,7 @@ novalidate action="" (ngSubmit)="submitForm()"
       </span>
     </div>
   </div>
-  <div>
-    <span>{{form.get('emissor')?.value}}</span>
-    <span>{{form.get('emissor')?.value}}</span>
-  </div>
+
 </form>
 
 
