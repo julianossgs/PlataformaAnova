@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import {EventEmitter, Input, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-pagination',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css'
 })
@@ -20,8 +21,9 @@ export class PaginationComponent {
 
   changePage(page: number): void {
     if (page >= 1 && page <= this.totalPages) {
-      this.currentPage = page;
-      this.pageChange.emit(this.currentPage);
+      // this.currentPage = page;
+      // this.pageChange.emit(this.currentPage);
+      this.pageChange.emit(page); // Emite o número da nova página
     }
   }
 }

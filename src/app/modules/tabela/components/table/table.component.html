@@ -73,15 +73,15 @@
         </td>
       </tr>
     </tbody>
-    <!-- Componente de paginação -->
-   <app-pagination
-   [totalItems]="filteredUsers.length"
-   [itemsPerPage]="itemsPerPage"
-   [currentPage]="currentPage"
-   (pageChange)="onPageChange($event)"
-    >
-    </app-pagination>
+
   </table>
 
-
+ <!-- Componente de paginação -->
+ <app-pagination
+ [totalItems]="filteredUsers.length"
+ [itemsPerPage]="itemsPerPage"
+ [currentPage]="currentPage"
+ (pageChange)="onPageChange($event)"
+  >
+  </app-pagination>
 </div>
