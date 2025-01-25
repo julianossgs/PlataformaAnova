@@ -23,12 +23,12 @@ import { PaginationComponent } from '../../../main/pagination/pagination.compone
         TableComponent,
         ModalmenutabelaComponent,
         InputComponent,
-        MenuLateralMainComponent,PaginationComponent],
+        MenuLateralMainComponent],
     templateUrl: './home-tabela.component.html',
     styleUrl: './home-tabela.component.css'
 })
 export class HomeTabelaComponent {
-  
+
   btnClicked(){
     alert('Teste botão');
   }
