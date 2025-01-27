@@ -31,6 +31,9 @@ export class TableIndexComponent {
        },
     {Nome: 'Giovanne Carlos Pereira Nogueira',
        },
-
+       {Nome: 'Giovanne Carlos Pereira Nogueira',
+       },
+       {Nome: 'Giovanne Carlos Pereira Nogueira',
+       },
   ]
 }

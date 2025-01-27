@@ -15,22 +15,23 @@ import { CardIndexHomeComponent } from '../../components/card-index-home/card-in
 import { GrafhicIndexComponent } from '../../components/grafhic-index/grafhic-index.component';
 import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-lateral-main.component';
 import { NavbarMainComponent } from "../../../main/navbar-main/navbar-main.component";
+import { ButtonIndexComponent } from "../../components/button-index/button-index.component";
 
 @Component({
     selector: 'app-home-index',
     imports: [
-        CommonModule,
-        NgxEchartsDirective, // para usar a diretiva [echarts]
-        // Seus componentes
-       
-        CardIndexComponent,
-        TableIndexComponent,
-        CardIndexSearchComponent,
-        CardIndexHomeComponent,
-        GrafhicIndexComponent,
-        MenuLateralMainComponent,
-
-    ],
+    CommonModule,
+    NgxEchartsDirective, // para usar a diretiva [echarts]
+    // Seus componentes
+    CardIndexComponent,
+    TableIndexComponent,
+    CardIndexSearchComponent,
+    CardIndexHomeComponent,
+    GrafhicIndexComponent,
+    MenuLateralMainComponent,
+    NavbarComponent,
+    ButtonIndexComponent
+],
     templateUrl: './home-index.component.html',
     // Use "styleUrls" (plural), não "styleUrl"
     styleUrls: ['./home-index.component.css'],
@@ -62,7 +63,9 @@ export class HomeIndexComponent {
   chartOption: EChartsOption = {
     xAxis: {
       type: 'category',
-      data: ['MAR/23', 'MAIO/24', 'JUNHO/24', 'SET/24', 'NOV/24', 'JAN/25'],
+      //consumindo uma API passar o endpoint aqui
+      data: ['01/01/2025', '02/01/2025', '03/01/2025',
+        '04/01/2025', '05/01/2025', '06/01/2025'],
       axisLabel: {
         rotate: 0,
         interval: 0
