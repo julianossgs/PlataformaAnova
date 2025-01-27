@@ -21,7 +21,7 @@
 /*medias*/
 @media (min-width: 1200px) {
   .home{
-    padding: 5px 0px 0px 0px;
+    padding: 5px 0px 5px 0px;
     margin-top: 85px;
 
   }
@@ -36,9 +36,9 @@
 
   .homeContent{
     background-color:#f1f1f1;
-
     padding: 0;
     margin: 0 2px 0 2px;
+    height: 100%;
   }
 
   .titleIndex{
@@ -54,8 +54,52 @@
     font-size: 25px;
   }
 
-  .homeContent{
-    height: auto;
-    margin: 0 0 150px 0;
-  }
+/* Contêiner principal */
+.graficIndex-container {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 11px;
+}
+
+/* Botões e título */
+.d-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.gap-2 {
+  gap: 10px; /* Espaçamento entre os botões do grupo esquerdo */
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.i{
+  font-weight: 700;
+}
+
+.flex-grow-1 {
+  flex-grow: 1; /* Faz o título ocupar espaço proporcional */
+}
+
+h6 {
+  text-align: center; /* Centraliza o texto */
+  font-weight: bold;
+  margin: 0;
+}
+
 }

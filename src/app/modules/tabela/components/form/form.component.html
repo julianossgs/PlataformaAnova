@@ -65,10 +65,12 @@ novalidate action="" (ngSubmit)="submitForm()"
     <input
      type="text"
      formControlName="cpfcnpj"
-     [mask]="form.get('cpfcnpj')?.value?.length < 12 ? '000.000.000-00' : '00.000.000/0000-00'"
+     [mask]="cpfCnpjMask"
      [dropSpecialCharacters]="false"
+
      class="form-control text-center"
      [class.is-invalid]="form.get('cpfcnpj')?.invalid && form.get('cpfcnpj')?.touched"
+     (input)="onCpfCnpjChange($event)"
      />
      <div class="invalid-feedback" *ngIf="form.get('cpfcnpj')?.invalid &&   form.get('cpfcnpj')?.touched">
      <span *ngIf="form.get('cpfcnpj')?.hasError('cpfCnpjInvalid')">CPF/CNPJ inválido!</span>

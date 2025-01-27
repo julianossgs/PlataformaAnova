@@ -22,7 +22,7 @@ import { RgFormatPipe } from '../../../../_pipes/rg-format.pipe';
         CommonModule,
         ReactiveFormsModule,
         NgxMaskDirective,
-        RgFormatPipe
+
     ],
     providers: [provideNgxMask()],
     templateUrl: './form.component.html',
@@ -35,6 +35,9 @@ export class FormComponent implements OnInit{
   @Output() formSubmit = new EventEmitter<any>(); // Evento para enviar o formulário
 
    form:FormGroup = new FormGroup({});
+
+   //Máscara inicial para CPF
+   cpfCnpjMask: string = '000.000.000-00';
 
    //injeção de dependência
    constructor(private fb:FormBuilder){
@@ -59,6 +62,19 @@ export class FormComponent implements OnInit{
       }
       return { cpfCnpjInvalid: true }; // Inválido
     };
+  }
+
+  onCpfCnpjChange(event: Event): void {
+    const input = (event.target as HTMLInputElement).value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    const previousMask = this.cpfCnpjMask;
+
+    // Atualiza a máscara com base no comprimento do valor digitado
+    this.cpfCnpjMask = input.length > 11 ? '00.000.000/0000-00' : '000.000.000-00';
+
+    // Força a atualização se a máscara mudou
+    if (previousMask !== this.cpfCnpjMask) {
+      this.form.get('cpfcnpj')?.updateValueAndValidity({ onlySelf: true });
+    }
   }
 
   //fim validador cpf/cnpj
@@ -118,9 +134,9 @@ export class FormComponent implements OnInit{
 
       ]],
 
-      cpfcnpj:['',[Validators.required,
+       cpfcnpj:['',[Validators.required,
         this.cpfCnpjValidator()]
-      ],
+       ],
 
       hub:['',[Validators.required]],
 
@@ -165,6 +181,6 @@ export class FormComponent implements OnInit{
     }
   }
 
-  
+
 
 }
