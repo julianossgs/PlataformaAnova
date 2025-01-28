@@ -1,6 +1,7 @@
 /*Css mobile*/
 .home{
   background-color: #f1f1f1;
+
 }
 
 .titleIndex{
@@ -38,7 +39,7 @@
     background-color:#f1f1f1;
     padding: 0;
     margin: 0 2px 0 2px;
-    height: 100%;
+    height: auto;
   }
 
   .titleIndex{
@@ -51,7 +52,7 @@
   }
 
   .homeHeader p{
-    font-size: 25px;
+    font-size: 22px;
   }
 
 /* Contêiner principal */
@@ -60,6 +61,7 @@
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 11px;
+  height: 440px;
 }
 
 /* Botões e título */

@@ -19,7 +19,7 @@
 } */
 
 .navbar {
-  height: 100vh;
+  height:100vh;
   position: fixed;
   left: 0;
   width: 4.8rem;
@@ -27,7 +27,7 @@
 }
 
 .navbar-toggler{
-  margin-top: -255px;
+  margin-top: calc(50px+10px);
   border: none;
 }
 
@@ -37,4 +37,14 @@
 
 .offcanvas-header{
   margin-top: 5rem;
+}
+
+.custom-toggler {
+  margin-top: 90px; /* Define a distância de 90 pixels do topo */
+  margin-bottom: 130px; /* Define a margem inferior de 130 pixels */
+  border: none; /* Remove a borda */
+}
+
+.custom-toggler:focus {
+  outline: none; /* Remove o outline ao focar no botão */
 }

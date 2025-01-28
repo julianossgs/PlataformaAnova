@@ -7,7 +7,6 @@ import { EChartsOption } from 'echarts';
 
 // Seus outros imports (ex.: Navbar, Footer, etc.)
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { FooterComponent } from '../../components/footer/footer.component';
 import { CardIndexComponent } from '../../components/card-index/card-index.component';
 import { TableIndexComponent } from '../../components/table-index/table-index.component';
 import { CardIndexSearchComponent } from '../../components/card-index-search/card-index-search.component';
@@ -16,6 +15,7 @@ import { GrafhicIndexComponent } from '../../components/grafhic-index/grafhic-in
 import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-lateral-main.component';
 import { NavbarMainComponent } from "../../../main/navbar-main/navbar-main.component";
 import { ButtonIndexComponent } from "../../components/button-index/button-index.component";
+import { FooterMainComponent } from "../../../main/footer-main/footer-main.component";
 
 @Component({
     selector: 'app-home-index',
@@ -30,7 +30,8 @@ import { ButtonIndexComponent } from "../../components/button-index/button-index
     GrafhicIndexComponent,
     MenuLateralMainComponent,
     NavbarComponent,
-    ButtonIndexComponent
+    ButtonIndexComponent,
+    
 ],
     templateUrl: './home-index.component.html',
     // Use "styleUrls" (plural), não "styleUrl"
@@ -72,13 +73,17 @@ export class HomeIndexComponent {
       }
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      splitNumber: 10, // Aumente ou diminua para controlar a distância entre as linhas
+      axisLabel: {
+        formatter: '{value}%' // Formata os rótulos, se necessário
+      }
     },
     series: [
       {
         name: 'Vendas(%)',
         type: 'line',
-        data: [5, 10, 20, 40, 60, 80],
+        data: [5, 10, 20, 40, 60,80],
         label: {
           show: true,
           position: 'top',

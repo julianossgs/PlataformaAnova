@@ -1,9 +1,14 @@
-<app-navbar-main *ngIf="shouldShowNavbar"></app-navbar-main>
+<ng-container *ngIf="!isLoginOrRegisterRoute">
+
+  <app-navbar-main></app-navbar-main>
+</ng-container>
+
 
 <router-outlet></router-outlet>
 
-<app-footer-main *ngIf="shouldShowFooter"></app-footer-main>
+<ng-container *ngIf="!isLoginOrRegisterRoute">
+  
+  <app-footer-main></app-footer-main>
+</ng-container>
 
-<!-- <app-navbar-main></app-navbar-main>
-<router-outlet></router-outlet>
-<app-footer-main></app-footer-main> -->
+

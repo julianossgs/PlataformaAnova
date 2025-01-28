@@ -12,18 +12,19 @@ import { ModalmenutabelaComponent } from "../../components/modalmenutabela/modal
 import { InputComponent } from "../../../tabela/components/input/input.component";
 import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-lateral-main.component';
 import { PaginationComponent } from '../../../main/pagination/pagination.component';
+import { FooterMainComponent } from "../../../main/footer-main/footer-main.component";
 @Component({
     selector: 'app-home-tabela',
     imports: [ButtonComponent,
-        ModalComponent,
-        ButtonNavbarComponent,
-        BreadcrumbsComponent,
-        AccordionComponent,
-        ModalComponent,
-        TableComponent,
-        ModalmenutabelaComponent,
-        InputComponent,
-        MenuLateralMainComponent],
+    ModalComponent,
+    ButtonNavbarComponent,
+    BreadcrumbsComponent,
+    AccordionComponent,
+    ModalComponent,
+    TableComponent,
+    ModalmenutabelaComponent,
+    InputComponent,
+    MenuLateralMainComponent, FooterMainComponent],
     templateUrl: './home-tabela.component.html',
     styleUrl: './home-tabela.component.css'
 })

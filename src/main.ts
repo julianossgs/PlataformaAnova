@@ -49,17 +49,17 @@ import { HomeLoginComponent } from './app/modules/login/pages/home-login/home-lo
 import { HomeRegisterComponent } from './app/modules/login/pages/home-register/home-register.component';
 import { HomeTabelaComponent } from './app/modules/tabela/pages/home-tabela/home-tabela.component';
 import { HomeIndexComponent } from './app/modules/index/pages/home-index/home-index.component';
-
+import { routes } from './app/app.routes';
 
 // Definição das rotas
-const routes: Routes = [
-  { path: '', redirectTo: '/index', pathMatch: 'full' }, // Redireciona para a página inicial
-  { path: 'login', component: HomeLoginComponent }, // Página de login
-  { path: 'register', component: HomeRegisterComponent }, // Página de registro
-  { path: 'tabela', component: HomeTabelaComponent }, // Página de tabela
-  { path: 'index', component: HomeIndexComponent }, // Página inicial
-  { path: '**', redirectTo: '/index' }, // Redireciona para a página inicial caso a rota não seja encontrada
-];
+// const routes: Routes = [
+//   { path: '', redirectTo: '/index', pathMatch: 'full' }, // Redireciona para a página inicial
+//   { path: 'login', component: HomeLoginComponent }, // Página de login
+//   { path: 'register', component: HomeRegisterComponent }, // Página de registro
+//   { path: 'tabela', component: HomeTabelaComponent }, // Página de tabela
+//   { path: 'index', component: HomeIndexComponent }, // Página inicial
+//   { path: '**', redirectTo: '/index' }, // Redireciona para a página inicial caso a rota não seja encontrada
+// ];
 
 bootstrapApplication(AppComponent, {
   providers: [
