@@ -7,11 +7,10 @@ import { HomeIndexComponent } from './modules/index/pages/home-index/home-index.
 
 
 export const routes: Routes = [
-   {path:'login',component:HomeLoginComponent},
-   {path:'register',component:HomeRegisterComponent},
-   {path:'tabela',component:HomeTabelaComponent},
-   {path:'index',component:HomeIndexComponent},
-   { path: '', redirectTo: 'tabela', pathMatch: 'full' },
-  { path: '**', redirectTo: '/index' }
-  //  {path: '', redirectTo: '/login', pathMatch: 'full' }
- ];
+  { path: 'login', component: HomeLoginComponent },
+  { path: 'register', component: HomeRegisterComponent },
+  { path: 'tabela', component: HomeTabelaComponent },
+  { path: 'index', component: HomeIndexComponent },
+  { path: '', redirectTo: 'tabela', pathMatch: 'full' },
+  { path: '**', redirectTo: 'index' }
+];
