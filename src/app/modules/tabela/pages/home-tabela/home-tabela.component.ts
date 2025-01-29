@@ -24,7 +24,8 @@ import { FooterMainComponent } from "../../../main/footer-main/footer-main.compo
     TableComponent,
     ModalmenutabelaComponent,
     InputComponent,
-    MenuLateralMainComponent, FooterMainComponent],
+    MenuLateralMainComponent,
+    FooterMainComponent],
     templateUrl: './home-tabela.component.html',
     styleUrl: './home-tabela.component.css'
 })

@@ -9,18 +9,15 @@
         </div>
         <div class="mobileContent">
           <!-- Componentes mobile -->
-          <!-- <app-navbar-main></app-navbar-main> -->
+
           <app-card-index></app-card-index>
           <app-table-index></app-table-index>
           <app-grafhic-index></app-grafhic-index>
 
-          <!-- Caso queira o gráfico do ECharts também no mobile:
-               <div *ngIf="isBrowser"
-                    echarts
-                    [options]="chartOption"
-                    style="width: 100%; height: 400px;">
-               </div>
-          -->
+           <!-- Gráfico -->
+           <div *ngIf="isBrowser" echarts [options]="chartOption">
+
+           </div>
 
           <app-card-index-search></app-card-index-search>
           <app-card-index-home></app-card-index-home>
@@ -56,40 +53,47 @@
           </div>
 
           <!-- Segunda linha: Gráfico -->
-          <div class="mt-2">
-            <div class="graficIndex-container">
-              <!-- Linha com os botões e título -->
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <!-- Grupo de botões à esquerda -->
-                <div class="d-flex gap-2">
-                  <!-- Botão: Filtrar por data -->
-                  <button type="button" class="btn btn-light d-flex align-items-center">
-                    <i class="bi bi-funnel me-1"></i> <!-- Ícone do filtro -->
-                    Filtrar por data
-                  </button>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mt-2">
+              <div class="graficIndex-container">
+                <!-- Linha com os botões e título -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div class="d-flex gap-2">
+                    <!-- Botão: Filtrar por data -->
+                    <app-button-grafic-index
+                      buttonText="Filtrar por data"
+                      iconClass="bi bi-funnel"
+                      apiUrl="https://api.exemplo.com/filtrar"
+                      (buttonClick)="onFilter($event)">
+                    </app-button-grafic-index>
 
-                  <!-- Botão: Exportar -->
-                  <button type="button" class="btn d-flex align-items-center">
-                    <i class="bi bi-box-arrow-up-right me-1"></i> <!-- Ícone de exportação -->
-                    Exportar
-                  </button>
+                    <!-- Botão: Exportar -->
+                    <app-button-grafic-index
+                      buttonText="Exportar"
+                      iconClass="bi bi-box-arrow-up-right"
+                      apiUrl="https://api.exemplo.com/exportar"
+                      (buttonClick)="onExport($event)">
+                    </app-button-grafic-index>
+                  </div>
+
+                  <!-- Título centralizado -->
+                  <h6 class="text-center mb-0 flex-grow-1">Rentabilidade</h6>
+
+                  <!-- Select da Carteira -->
+                  <app-input-select-grafic-index
+                    apiUrl="https://api.exemplo.com/carteiras"
+                    iconClass="bi bi-list-nested"
+                    (selectionChange)="onCarteiraChange($event)">
+                  </app-input-select-grafic-index>
                 </div>
 
-                <!-- Título centralizado -->
-                <h6 class="text-center mb-0 flex-grow-1">Rentabilidade</h6>
 
-                <!-- Botão: Selecionar carteira -->
-                <button type="button" class="btn d-flex align-items-center">
-                  <i class="bi bi-list-nested me-1"></i> <!-- Ícone de carteira -->
-                  Selecionar carteira
-                </button>
+                <!-- Gráfico -->
+                <div *ngIf="isBrowser" echarts [options]="chartOption"></div>
               </div>
-
-
-              <!-- Gráfico -->
-              <div *ngIf="isBrowser" echarts [options]="chartOption"></div>
             </div>
-          </div>
+          </form>
+
 
         </div>
 
@@ -105,5 +109,3 @@
 
   </div>
 </div>
-
-
