@@ -65,6 +65,7 @@ export class TableComponent {
           selected: false
         }));
         this.filteredUsers = [...this.users]; // Inicializa os dados filtrados
+        this.currentPage = 1; // Reseta para a primeira página
         this.updatePaginatedUsers();
       },
       error: (err) => {
@@ -87,20 +88,28 @@ export class TableComponent {
         (!this.filters.dataRegistro || user.Dataderegistro.includes(this.filters.dataRegistro))
       );
     });
+    this.currentPage = 1; // Sempre reinicia para a primeira página
     this.updatePaginatedUsers();
   }
 
-  // Atualiza os itens exibidos na página atual
+  // Calcula o total de páginas corretamente
+  get totalPages(): number {
+    return Math.ceil(this.filteredUsers.length / this.itemsPerPage);
+  }
+
+  // Atualiza a lista paginada corretamente
   updatePaginatedUsers(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedUsers = this.filteredUsers.slice(startIndex, endIndex);
   }
 
-  // Manipula a mudança de página
+  // Manipula a mudança de página corretamente
   onPageChange(page: number): void {
-    this.currentPage = page;
-    this.updatePaginatedUsers();
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updatePaginatedUsers();
+    }
   }
 
 }
