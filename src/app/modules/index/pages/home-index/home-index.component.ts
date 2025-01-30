@@ -2,7 +2,7 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 // ngx-echarts
 import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
@@ -19,13 +19,11 @@ import { MenuLateralMainComponent } from '../../../main/menu-lateral-main/menu-l
 import { ButtonGraficIndexComponent } from '../../components/button-grafic-index/button-grafic-index.component';
 import { InputSelectGraficIndexComponent } from '../../components/input-select-grafic-index/input-select-grafic-index.component';
 
-
 @Component({
     selector: 'app-home-index',
     imports: [
     CommonModule,
-    NgxEchartsDirective, // para usar a diretiva [echarts]
-    // Seus componentes
+    NgxEchartsDirective,
     CardIndexComponent,
     TableIndexComponent,
     CardIndexSearchComponent,
@@ -37,110 +35,114 @@ import { InputSelectGraficIndexComponent } from '../../components/input-select-g
     ReactiveFormsModule,
     InputSelectGraficIndexComponent,
     ButtonGraficIndexComponent,
-
 ],
     templateUrl: './home-index.component.html',
-    // Use "styleUrls" (plural), não "styleUrl"
     styleUrls: ['./home-index.component.css'],
     providers: [
-        // Fornece a biblioteca ECharts por meio do ngx-echarts
-        provideEcharts({
-        // Para SSR avançado, se desejar, pode adicionar lazy load aqui
-        // Exemplo:
-        // echarts: () => {
-        //   if (typeof window === 'undefined') {
-        //     // Se estiver no servidor, retorna fake
-        //     return Promise.resolve({});
-        //   } else {
-        //     return import('echarts');
-        //   }
-        // }
-        })
+        provideEcharts()
     ]
 })
 export class HomeIndexComponent {
-
-  /**
-   * Variável para indicar se estamos rodando no browser (true) ou no servidor (false).
-   * Isso evita o erro 'window is not defined' no SSR.
-   */
   isBrowser = false;
+  form: FormGroup;
+  chartOption: EChartsOption = {};
+  private apiUrl = 'http://vps40250.publiccloud.com.br:5010/api/get_grafico_rentabilidade';
 
-  form: FormGroup; // Declaração do formulário
-
-  // Opções do seu gráfico ECharts
-  chartOption: EChartsOption = {
-    tooltip: {
-      trigger: 'axis'
-    },
-    legend: {
-      data: ['ANRProv BR', 'CDI', 'IBOV'], // 🔥 Adicionando as legendas dos índices
-      top: '5%' // 🔥 Posicionando a legenda no topo
-    },
-    xAxis: {
-      type: 'category',
-      data: ['01/01/2025', '02/01/2025', '03/01/2025',
-             '04/01/2025', '05/01/2025', '06/01/2025'],
-      axisLabel: {
-        rotate: 0,
-        interval: 0
-      }
-    },
-    yAxis: {
-      type: 'value',
-      splitNumber: 10,
-      axisLabel: {
-        formatter: '{value}%' // 🔥 Formata os valores do eixo Y como porcentagem
-      }
-    },
-    series: [
-      {
-        name: 'ANRProv BR', // 🔥 Primeiro índice
-        type: 'line',
-        data: [5, 10, 20, 40, 60, 80], // 🔥 Valores do índice ANRProv BR
-        label: {
-          show: true,
-          position: 'top',
-          formatter: '{c}%'
-        }
-      },
-      {
-        name: 'CDI', // 🔥 Segundo índice
-        type: 'line',
-        data: [2, 5, 7, 10, 15, 18], // 🔥 Valores do CDI
-        label: {
-          show: true,
-          position: 'top',
-          formatter: '{c}%'
-        }
-      },
-      {
-        name: 'IBOV', // 🔥 Terceiro índice
-        type: 'line',
-        data: [8, 15, 25, 30, 50, 70], // 🔥 Valores do IBOV
-        label: {
-          show: true,
-          position: 'top',
-          formatter: '{c}%'
-        }
-      }
-    ]
-  };
-
-
-  /**
-   * Construtor que injeta PLATFORM_ID para verificar se estamos no browser ou servidor
-   */
-  constructor(@Inject(PLATFORM_ID) private platformId: Object,private fb: FormBuilder,private http: HttpClient) {
-    // Verifica se estamos no browser
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private fb: FormBuilder, private http: HttpClient) {
     this.isBrowser = isPlatformBrowser(this.platformId);
-
-     // Inicializa o formulário
-     this.form = this.fb.group({
-      carteira: [''], // Select da Carteira
-      dataFiltro: [''], // Botão "Filtrar por data"
+    this.form = this.fb.group({
+      nome_carteira: ['ANR Strategy'],
+      data_inicial: ['2023-09-08'],
+      data_final: ['2023-09-11'],
     });
   }
+
+  ngOnInit(): void {
+    this.carregarDadosGrafico();
+  }
+
+  carregarDadosGrafico(): void {
+    const body = {
+      nome_carteira: this.form.get('nome_carteira')?.value || 'ANR Strategy'
+    };
+
+    this.http.post<any>(this.apiUrl, body, { responseType: 'json' })
+      .subscribe(response => {
+        console.log('Nome da Carteira:', body.nome_carteira);
+
+        if (!response || !response.dates || !response.nomeCarteira || !response.cdi || !response.ibov) {
+          console.error('Erro: Resposta da API incompleta ou inválida.');
+          return;
+        }
+
+        // Convertendo os valores para números
+        const carteiraData = response.nomeCarteira.map(Number);
+        const cdiData = response.cdi.map(Number);
+        const ibovData = response.ibov.map(Number);
+
+        // Pegando o nome diretamente do body
+        const carteiraNome = body.nome_carteira;
+
+        // Encontrar mínimo e máximo real dos valores
+        const minY = Math.min(...carteiraData, ...cdiData, ...ibovData);
+        const maxY = Math.max(...carteiraData, ...cdiData, ...ibovData);
+
+        // Aplicar margem para melhor visualização (10% extra no mínimo e máximo)
+        const margin = (maxY - minY) * 0.1;
+        const adjustedMinY = Math.max(0, minY - margin);
+        const adjustedMaxY = maxY + margin;
+
+        // Ajustar quantidade de divisões baseado no tamanho da tela
+        const isMobile = window.innerWidth < 768;
+        const splitNumber = isMobile ? 5 : 10;
+
+        this.chartOption = {
+          tooltip: { trigger: 'axis' },
+          legend: {
+            data: [carteiraNome, 'CDI', 'IBOV'], // Nome correto da carteira
+            top: '5%',
+            icon: 'rect',
+            itemWidth: 15,
+            itemHeight: 5,
+            textStyle: { fontSize: isMobile ? 10 : 12 }
+          },
+          grid: {
+            left: '10%',
+            right: '10%',
+            top: '20%',
+            bottom: isMobile ? '15%' : '10%'
+          },
+          xAxis: {
+            type: 'category',
+            data: response.dates || [],
+            axisLabel: {
+              rotate: isMobile ? 45 : 0,
+              fontSize: isMobile ? 10 : 12
+            }
+          },
+          yAxis: {
+            type: 'value',
+            splitNumber: splitNumber,
+            min: adjustedMinY,
+            max: adjustedMaxY,
+            axisLabel: {
+              formatter: (value: number) => `${value.toFixed(2)}%`,
+              fontSize: isMobile ? 10 : 12
+            }
+          },
+          series: [
+            { name: carteiraNome, type: 'line', data: carteiraData, smooth: true }, // Nome correto da carteira
+            { name: 'CDI', type: 'line', data: cdiData, smooth: true },
+            { name: 'IBOV', type: 'line', data: ibovData, smooth: true }
+          ]
+        };
+      }, error => {
+        console.error('Erro ao carregar os dados do gráfico:', error);
+      });
+}
+
+
+
 
   onFilter(response: any): void {
     console.log('Filtragem executada:', response);
@@ -152,20 +154,10 @@ export class HomeIndexComponent {
 
   onCarteiraChange(value: string): void {
     console.log('Carteira selecionada:', value);
-    this.form.get('carteira')?.setValue(value);
+    this.form.get('nome_carteira')?.setValue(value);
   }
 
-  // Função para processar os dados do formulário
-  // onSubmit(): void {
-  //   console.log('Formulário enviado:', this.form.value);
-  // }
-
   onSubmit(): void {
-    const formData = this.form.value;
-    console.log('Enviando formulário:', formData);
-
-    this.http.post('https://api.exemplo.com/enviar-formulario', formData).subscribe(response => {
-      console.log('Formulário enviado com sucesso!', response);
-    });
-}
+    this.carregarDadosGrafico();
+  }
 }

@@ -12,14 +12,15 @@
 
           <app-card-index></app-card-index>
           <app-table-index></app-table-index>
-          <app-grafhic-index></app-grafhic-index>
-
-           <!-- Gráfico -->
-           <div *ngIf="isBrowser" echarts [options]="chartOption">
-
-           </div>
 
           <app-card-index-search></app-card-index-search>
+           <!-- Gráfico -->
+            <div class="graficIndex-container">
+              <div *ngIf="isBrowser" echarts [options]="chartOption">
+
+              </div>
+            </div>
+
           <app-card-index-home></app-card-index-home>
         </div>
       </div>
@@ -53,46 +54,43 @@
           </div>
 
           <!-- Segunda linha: Gráfico -->
-          <form [formGroup]="form" (ngSubmit)="onSubmit()">
-            <div class="mt-2">
-              <div class="graficIndex-container">
-                <!-- Linha com os botões e título -->
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <div class="d-flex gap-2">
-                    <!-- Botão: Filtrar por data -->
-                    <app-button-grafic-index
-                      buttonText="Filtrar por data"
-                      iconClass="bi bi-funnel"
-                      apiUrl="https://api.exemplo.com/filtrar"
-                      (buttonClick)="onFilter($event)">
-                    </app-button-grafic-index>
+          <div class="mt-2">
+            <div class="graficIndex-container">
+              <!-- Linha com os botões e título -->
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex gap-2">
+                  <!-- Botão: Filtrar por data -->
+                  <app-button-grafic-index
+                    buttonText="Filtrar por data"
+                    iconClass="bi bi-funnel"
+                    apiUrl=""
+                    (buttonClick)="onFilter($event)">
+                  </app-button-grafic-index>
 
-                    <!-- Botão: Exportar -->
-                    <app-button-grafic-index
-                      buttonText="Exportar"
-                      iconClass="bi bi-box-arrow-up-right"
-                      apiUrl="https://api.exemplo.com/exportar"
-                      (buttonClick)="onExport($event)">
-                    </app-button-grafic-index>
-                  </div>
-
-                  <!-- Título centralizado -->
-                  <h6 class="text-center mb-0 flex-grow-1">Rentabilidade</h6>
-
-                  <!-- Select da Carteira -->
-                  <app-input-select-grafic-index
-                    apiUrl="https://api.exemplo.com/carteiras"
-                    iconClass="bi bi-list-nested"
-                    (selectionChange)="onCarteiraChange($event)">
-                  </app-input-select-grafic-index>
+                  <!-- Botão: Exportar -->
+                  <app-button-grafic-index
+                    buttonText="Exportar"
+                    iconClass="bi bi-box-arrow-up-right"
+                    apiUrl=""
+                    (buttonClick)="onExport($event)">
+                  </app-button-grafic-index>
                 </div>
 
+                <!-- Título centralizado -->
+                <h6 class="text-center mb-0 flex-grow-1">Rentabilidade</h6>
 
-                <!-- Gráfico -->
-                <div *ngIf="isBrowser" echarts [options]="chartOption"></div>
+                <!-- Select da Carteira -->
+                <app-input-select-grafic-index
+                  apiUrl=""
+                  iconClass="bi bi-list-nested"
+                  (selectionChange)="onCarteiraChange($event)">
+                </app-input-select-grafic-index>
               </div>
-            </div>
-          </form>
+
+              <!-- Gráfico -->
+             <div *ngIf="isBrowser" echarts [options]="chartOption"></div>
+              </div>
+          </div>
 
 
         </div>
@@ -106,6 +104,9 @@
 
 
     </div>
+
+
+
 
   </div>
 </div>
