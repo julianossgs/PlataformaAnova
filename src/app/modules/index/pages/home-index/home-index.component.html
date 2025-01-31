@@ -13,7 +13,36 @@
           <app-card-index></app-card-index>
           <app-table-index></app-table-index>
 
-          <app-card-index-search></app-card-index-search>
+          <div class="cardIndexSearch row align-items-center">
+            <div class="col-8 selectWallet">
+              <app-input-select-index-card-search
+            inputSelectId="carteiraSelect"
+            [selectedText]="'Selecione a Carteira'"
+            (selectionChange)="onCarteiraChange($event)">
+            </app-input-select-index-card-search>
+
+
+            </div>
+
+            <div class="col-2 justify-content-center export">
+              <app-button-index-card-search
+              [iconClass]="'bi bi-box-arrow-in-right'"
+              [iconColor]="'#212121'"
+              [iconSize]="'28px'">
+
+              </app-button-index-card-search>
+            </div>
+            <div class="col-2 funnel">
+              <app-button-index-card-search
+              [iconClass]="'bi bi-funnel'"
+              [iconColor]="'#212121'"
+              [iconSize]="'28px'"
+              (dateSelected)="onDateRangeSelected($event)">
+
+              </app-button-index-card-search>
+            </div>
+          </div>
+
            <!-- Gráfico -->
             <div class="graficIndex-container">
               <div *ngIf="isBrowser" echarts [options]="chartOption">
@@ -60,18 +89,25 @@
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="d-flex gap-2">
                   <!-- Botão: Filtrar por data -->
-                  <app-button-grafic-index
+                  <!-- <app-button-grafic-index
                     buttonText="Filtrar por data"
                     iconClass="bi bi-funnel"
-                    apiUrl=""
+                    apiUrl="http://vps40250.publiccloud.com.br:5010/api/get_grafico_rentabilidade"
                     (buttonClick)="onFilter($event)">
-                  </app-button-grafic-index>
+                  </app-button-grafic-index> -->
+                  <app-button-index-card-search
+                  [iconClass]="'bi bi-funnel'"
+                  [iconColor]="'#212121'"
+                  [iconSize]="'28px'"
+                  (dateSelected)="onDateRangeSelected($event)">
+
+                  </app-button-index-card-search>
 
                   <!-- Botão: Exportar -->
                   <app-button-grafic-index
                     buttonText="Exportar"
                     iconClass="bi bi-box-arrow-up-right"
-                    apiUrl=""
+                    apiUrl="http://vps40250.publiccloud.com.br:5010/api/get_grafico_rentabilidade"
                     (buttonClick)="onExport($event)">
                   </app-button-grafic-index>
                 </div>
@@ -80,16 +116,25 @@
                 <h6 class="text-center mb-0 flex-grow-1">Rentabilidade</h6>
 
                 <!-- Select da Carteira -->
-                <app-input-select-grafic-index
-                  apiUrl=""
+                <!-- <app-input-select-grafic-index
+                  apiUrl="http://vps40250.publiccloud.com.br:5010/api/get_grafico_rentabilidade"
                   iconClass="bi bi-list-nested"
                   (selectionChange)="onCarteiraChange($event)">
-                </app-input-select-grafic-index>
+                </app-input-select-grafic-index> -->
+                <app-input-select-index-card-search
+                inputSelectId="carteiraSelect"
+                [selectedText]="'Selecione a Carteira'"
+                (selectionChange)="onCarteiraChange($event)">
+                </app-input-select-index-card-search>
+
               </div>
 
               <!-- Gráfico -->
-             <div *ngIf="isBrowser" echarts [options]="chartOption"></div>
+              <div *ngIf="isBrowser" echarts [options]="chartOption" style="z-index:1;">
+
               </div>
+            </div>
+
           </div>
 
 

@@ -1,7 +1,7 @@
 /*Css mobile*/
 .home{
-  /* background-color: #f1f1f1; */
-  background-color: #007bff;
+  background-color: #f1f1f1;
+
   height: 100%;
 }
 
@@ -17,6 +17,28 @@
   margin-bottom: 90px;
 }
 
+
+.cardIndexSearch{
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-top: 3.3rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+  padding-right: 10px;
+}
+
+.export{
+  text-align: center;
+}
+
+.funnel{
+  text-align: center;
+}
+
+
  .graficIndex-container {
   padding: 15px;
   background-color: #f9f9f9;
@@ -27,9 +49,28 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  z-index: 1;
+  position:relative;
 }
 
+/* Aumentando o z-index dos botões e selects */
+.graficIndex-container .d-flex {
+  z-index: 10;
+  position: relative;
+}
+
+.graficIndex-container select,
+.graficIndex-container button {
+  z-index: 10;
+  position: relative;
+}
+
+/* Garante que o gráfico não bloqueie interações */
+.graficIndex-container [echarts] {
+  position: relative;
+  z-index: 1;
+  pointer-events: none; /* Evita que o gráfico bloqueie os cliques */
+}
 
 
 /*fim css mobile*/
@@ -39,7 +80,7 @@
 /*medias*/
 @media(min-width: 768px){
   .home{
-    background-color: #007bff;
+    background-color: #f1f1f1;
 
   }
 
@@ -52,7 +93,7 @@
   .home{
    padding: 0px 0px 5px 25px;
    margin-top: 80px;
-   background-color: #007bff;
+   background-color: #f1f1f1;
    height: 100%;
  }
 
