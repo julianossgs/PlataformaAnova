@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { FormControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input-select-grafic-index',
-  imports: [CommonModule, ReactiveFormsModule],
+  standalone: true,
+  imports:[CommonModule,ReactiveFormsModule],
   templateUrl: './input-select-grafic-index.component.html',
   styleUrl: './input-select-grafic-index.component.css'
 })
@@ -15,7 +16,7 @@ export class InputSelectGraficIndexComponent implements OnInit {
   @Input() iconClass: string = 'bi bi-list-nested';
   @Output() selectionChange = new EventEmitter<string>(); // Evento emitido ao selecionar
 
-  selectControl = new FormControl('');
+  selectControl = new FormControl<string | null>('');
   options: { value: string; label: string }[] = [];
 
   constructor(private http: HttpClient) {}
@@ -23,25 +24,24 @@ export class InputSelectGraficIndexComponent implements OnInit {
   ngOnInit() {
     this.fetchOptions();
     this.selectControl.valueChanges.subscribe(value => {
-      this.selectionChange.emit();
+      console.log(`Carteira selecionada: ${value}`);
+      this.selectionChange.emit(value ?? '');
     });
   }
 
   fetchOptions() {
     if (this.apiUrl) {
-      this.http.get<any[]>(this.apiUrl).subscribe(data => {
-        this.options = data.map(item => ({
-          value: item.id,
-          label: item.nome
-        }));
-      });
-    } else {
-      this.options = [
-        { value: 'ANR Strategy', label: 'ANR Strategy' },
-        { value: 'ANR Flex', label: 'ANR Flex' },
-        { value: 'ANR Prev Pro BR', label: 'ANR Prev Pro BR' },
-        { value: 'ANR Prev Pro USA', label: 'ANR Prev Pro USA' }
-      ];
+      this.http.get<any[]>(this.apiUrl).subscribe(
+        data => {
+          this.options = data.map(item => ({
+            value: item.id,
+            label: item.nome
+          }));
+        },
+        error => {
+          console.error('Erro ao carregar as opções do select:', error);
+        }
+      );
     }
   }
 }

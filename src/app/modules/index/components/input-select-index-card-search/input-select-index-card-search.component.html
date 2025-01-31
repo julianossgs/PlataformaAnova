@@ -1,10 +1,11 @@
 <select class="form-select"
-[id]="inputSelectId"
-required>
-  <option selected>{{selectedText}}</option>
-  <option *ngFor="let itens of listItems">
+  [id]="inputSelectId"
+  required
+  (change)="onSelectionChangeMobile($event)">
 
-    {{itens.name}}
+  <option value="" disabled selected>{{ selectedText }}</option>
+  <option *ngFor="let item of listItems" [value]="item.name">
+    {{ item.name }}
   </option>
-
 </select>
+
