@@ -10,3 +10,12 @@
 select{
   font-size: 13px;
 }
+
+@media(min-width: 1200px){
+   .form-select{
+    border: none;
+    background-color: #fff;
+    font-weight: bold;
+    z-index: 10!important;
+   }
+}
