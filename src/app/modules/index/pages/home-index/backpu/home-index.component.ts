@@ -53,10 +53,7 @@ export class HomeIndexComponent {
   private apiUrl = 'http://vps40250.publiccloud.com.br:5010/api/get_grafico_rentabilidade';
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private fb: FormBuilder, private http: HttpClient) {
-
     this.isBrowser = isPlatformBrowser(this.platformId);
-    // this.initEventListeners();
-
     this.form = this.fb.group({
       nome_carteira: ['ANR Strategy'],
       data_inicial: [null],

@@ -9,9 +9,11 @@ import { IconIndexComponent } from '../icon-index/icon-index.component';
   standalone: true,
   imports: [CommonModule, IconIndexComponent],
   templateUrl: './button-index-card-search.component.html',
-  styleUrl: './button-index-card-search.component.css'
+  styleUrl: './button-index-card-search.component.css',
+
 })
 export class ButtonIndexCardSearchComponent {
+  @Input() buttonText:string='';
   @Input() iconClass: string = '';
   @Input() iconColor: string = '';
   @Input() iconSize: string = '';
@@ -20,6 +22,7 @@ export class ButtonIndexCardSearchComponent {
   constructor(private modalService: NgbModal) {}
 
   onButtonClick() {
+    console.log('Botão clicado!');
     const modalRef = this.modalService.open(DateRangePickerComponent, { size: 'sm', centered: true });
     modalRef.result.then((result) => {
       if (result) {

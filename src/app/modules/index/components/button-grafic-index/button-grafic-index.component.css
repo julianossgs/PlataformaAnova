@@ -3,3 +3,10 @@
   font-size: 12px;
   cursor: pointer;
 }
+
+@media(min-width: 1200px){
+  .btn{
+    font-size: 14px;
+    z-index: 9999 !important;
+  }
+}

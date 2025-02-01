@@ -15,7 +15,7 @@
 
           <div class="cardIndexSearch row align-items-center">
             <div class="col-8 selectWallet">
-              <app-input-select-index-card-search style="position: relative; z-index: 5;" tabindex="0"
+              <app-input-select-index-card-search
             inputSelectId="carteiraSelect"
             [selectedText]="'Selecione a Carteira'"
             (selectionChange)="onCarteiraChange($event)">
@@ -25,7 +25,7 @@
             </div>
 
             <div class="col-2 justify-content-center export">
-              <app-button-index-card-search style="position: relative; z-index: 5;" tabindex="0"
+              <app-button-index-card-search
               [iconClass]="'bi bi-box-arrow-in-right'"
               [iconColor]="'#212121'"
               [iconSize]="'28px'">
@@ -33,7 +33,7 @@
               </app-button-index-card-search>
             </div>
             <div class="col-2 funnel">
-              <app-button-index-card-search style="position: relative; z-index: 5;" tabindex="0"
+              <app-button-index-card-search
               [iconClass]="'bi bi-funnel'"
               [iconColor]="'#212121'"
               [iconSize]="'28px'"
@@ -92,7 +92,7 @@
                 <div class="d-flex gap-2">
                   <!-- Botão: Filtrar por data -->
 
-                  <app-button-index-card-search style="position: relative; z-index: 5;" tabindex="0"
+                  <app-button-index-card-search
                   buttonText="Filtrar por data"
                   [iconClass]="'bi bi-funnel'"
                   [iconColor]="'#212121'"
@@ -116,7 +116,7 @@
 
                 <!-- Select da Carteira -->
                 <i class="bi bi-list-nested"></i>
-                <app-input-select-index-card-search style="position: relative; z-index: 5;" tabindex="0"
+                <app-input-select-index-card-search
 
               inputSelectId="carteiraSelect"
                 [selectedText]="'Selecione a Carteira'"

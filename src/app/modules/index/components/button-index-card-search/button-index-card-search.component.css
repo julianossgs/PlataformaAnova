@@ -1,9 +1,16 @@
 /*css mobile*/
 
 /*css principal*/
+.btn{
+  z-index: 9999 !important;
+  font-weight: bold;
+  font-size: 13px;
+  margin-left: 15px;
+}
+
 .btn:focus{
   border: none;
   outline: none;
   box-shadow: none;
-  z-index: 10;
+
 }
